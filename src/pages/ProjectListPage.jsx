@@ -5,7 +5,7 @@ import ProjectCard from "../components/ProjectCard";
 import AddProject from "../components/AddProject";
 
 // const API_URL = "http://localhost:5005";
-const API_URL = "https://scoretwce-backend.onrender.com/";
+const API_URL = "https://scoretwce-backend.onrender.com";
 
 function ProjectListPage() {
   const [projects, setProjects] = useState([]);
