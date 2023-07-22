@@ -1,14 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
-
+// const API_URL = "http://localhost:5005";
+const API_URL = "https://scoretwce-backend.onrender.com/";
 
 function AddTask(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -23,7 +22,7 @@ function AddTask(props) {
         // Reset the state to clear the inputs
         setTitle("");
         setDescription("");
-      
+
         // Invoke the callback function coming through the props
         // from the ProjectDetailsPage, to refresh the project details
         props.refreshProject();
@@ -31,11 +30,10 @@ function AddTask(props) {
       .catch((error) => console.log(error));
   };
 
-  
   return (
     <div className="AddTask">
       <h3>Add New Task</h3>
-      
+
       <form onSubmit={handleSubmit}>
         <label>Title:</label>
         <input

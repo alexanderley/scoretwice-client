@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
+// const API_URL = "http://localhost:5005";
+const API_URL = "https://scoretwce-backend.onrender.com/";
 
 function EditProjectPage(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  
+
   const { projectId } = useParams();
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     axios
       .get(`${API_URL}/api/projects/${projectId}`)
@@ -20,9 +21,7 @@ function EditProjectPage(props) {
         setDescription(oneProject.description);
       })
       .catch((error) => console.log(error));
-    
   }, [projectId]);
-  
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -31,22 +30,19 @@ function EditProjectPage(props) {
     axios
       .put(`${API_URL}/api/projects/${projectId}`, requestBody)
       .then((response) => {
-        navigate(`/projects/${projectId}`)
+        navigate(`/projects/${projectId}`);
       });
   };
-  
-  
+
   const deleteProject = () => {
-    
     axios
       .delete(`${API_URL}/api/projects/${projectId}`)
       .then(() => {
         navigate("/projects");
       })
       .catch((err) => console.log(err));
-  };  
+  };
 
-  
   return (
     <div className="EditProjectPage">
       <h3>Edit the Project</h3>
@@ -59,7 +55,7 @@ function EditProjectPage(props) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        
+
         <label>Description:</label>
         <textarea
           name="description"
