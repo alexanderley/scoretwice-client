@@ -2,9 +2,10 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-// const API_URL = "http://localhost:5005";
+import API_URL from "../../apiKey";
 
-const API_URL = "https://scoretwce-backend.onrender.com";
+// const API_URL = "http://localhost:5005";
+// const API_URL = "https://scoretwce-backend.onrender.com";
 
 function SignupPage(props) {
   const [email, setEmail] = useState("");
@@ -39,7 +40,7 @@ function SignupPage(props) {
 
   return (
     <div className="SignupPage">
-      <h1>Sign Up</h1>
+      <h1 className="textCenter">Sign Up</h1>
 
       <form onSubmit={handleSignupSubmit}>
         <label>Email:</label>
@@ -56,7 +57,9 @@ function SignupPage(props) {
         <label>Name:</label>
         <input type="text" name="name" value={name} onChange={handleName} />
 
-        <button type="submit">Sign Up</button>
+        <button type="submit" className="buttonRed fullWidth">
+          Sign Up
+        </button>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
