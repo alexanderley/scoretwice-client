@@ -1,12 +1,17 @@
 :root {
+  // Font families
   --font-primary: "Roboto";
   --font-secondary: "Righteous";
+
+  // font-sizes
   --font-xl: 32px;
   --font-mL: 24px;
   --font-m: 20px;
   --font-ms: 18px;
   --font-s: 16px;
   --font-xs: 12px;
+
+  // colors
   --white: #ffffff;
   --medium-grey: #dddddd;
   --border-grey: #e5e5e5;
@@ -24,6 +29,8 @@ body {
   font-size: var(--font-s);
 }
 
+// Text styling h1,h2,h3, etc...
+
 .textCenter {
   text-align: center;
 }
@@ -32,6 +39,7 @@ h1 {
   color: var(--black);
   font-family: var(--font-secondary);
   font-size: var(--font-xl);
+  // font-size: 32px;
 }
 
 h2 {
@@ -49,6 +57,8 @@ h3 {
 p {
   line-height: 150%;
 }
+
+// Ui styling
 
 .buttonRed {
   border: none;
@@ -82,4 +92,11 @@ p {
   padding: 20px;
   border-radius: 5px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}/*# sourceMappingURL=index.css.map */
+}
+
+// Form Styling
+// .formFlex {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 15px;
+// }

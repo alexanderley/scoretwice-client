@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import ProjectListPage from "./pages/ProjectListPage";
 import ProjectDetailsPage from "./pages/ProjectDetailsPage";
 import EditProjectPage from "./pages/EditProjectPage";
+import UserProfilePage from "./pages/UserProfilePage";
 
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage"; // <== IMPORT
@@ -14,7 +15,7 @@ import IsAnon from "./components/IsAnon"; // <== IMPORT
 
 function App() {
   return (
-    <div className="App">
+    <div className="App appBody">
       <Navbar />
 
       <Routes>
@@ -69,6 +70,7 @@ function App() {
             </IsAnon>
           }
         />
+        <Route path="/profile/:id" element={<UserProfilePage />} />
       </Routes>
     </div>
   );
