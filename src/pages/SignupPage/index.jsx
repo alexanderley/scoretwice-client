@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import API_URL from "../../apiKey";
+import API_URL from "../../../apiKey";
 
 import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
+import styles from "./SignupPage.module.css";
 
 // const API_URL = "http://localhost:5005";
 // const API_URL = "https://scoretwce-backend.onrender.com";
@@ -16,7 +17,7 @@ function SignupPage(props) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [gender, setGender] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [birthday, setBirthday] = useState(new Date());
 
   const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -27,12 +28,19 @@ function SignupPage(props) {
   const handleFirstName = (e) => setFirstName(e.target.value);
   const handleLastName = (e) => setLastName(e.target.value);
   const handleGender = (e) => setGender(e.target.value);
-  const handleBirthdate = (e) => setBirthday(e.target.value);
+  // const handleBirthday = (e) => setBirthday(e.target.value);
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     // Create an object representing the request body
-    const requestBody = { email, password, name };
+    const requestBody = {
+      email,
+      password,
+      firstName,
+      lastName,
+      gender,
+      birthday,
+    };
 
     // Make an axios request to the API
     // If the POST request is a successful redirect to the login page
@@ -52,7 +60,7 @@ function SignupPage(props) {
     <div className="SignupPage">
       <h1 className="textCenter">Sign Up</h1>
 
-      <form onSubmit={handleSignupSubmit}>
+      <form onSubmit={handleSignupSubmit} className={styles.signupForm}>
         <label>Email:</label>
         <input type="email" name="email" value={email} onChange={handleEmail} />
 
@@ -82,16 +90,16 @@ function SignupPage(props) {
 
         <label>Date of Birth:</label>
         <DatePicker
-          selected={birthday}
-          onChange={(date) => setBirthday(date)}
+          value={birthday}
+          onChange={setBirthday}
           dateFormat="yyyy-MM-dd"
         />
 
         <label>Gender:</label>
         <select name="gender" value={gender} onChange={handleGender}>
           <option value="">Select your gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
+          <option value="1">Male</option>
+          <option value="0">Female</option>
         </select>
 
         <button type="submit" className="buttonRed fullWidth">
