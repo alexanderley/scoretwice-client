@@ -16,7 +16,7 @@ function LoginPage(props) {
 
   const navigate = useNavigate();
 
-  const { storeToken } = useContext(AuthContext);
+  const { storeToken, setIsLoggedIn } = useContext(AuthContext);
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -35,8 +35,9 @@ function LoginPage(props) {
         console.log("Data foundUser Id: ", response.data.foundUser._id);
         const userId = response.data.foundUser._id;
         storeToken(response.data.authToken);
+        // authenticateUser();
+        setIsLoggedIn(true);
         navigate(`/profile/${userId}`);
-        authenticateUser();
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;

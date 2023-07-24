@@ -82,4 +82,62 @@ p {
   padding: 20px;
   border-radius: 5px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.sc-gauge {
+  width: 200px;
+  height: auto;
+  margin: 50px auto;
+}
+
+.sc-background {
+  position: relative;
+  height: 100px;
+  margin-bottom: 10px;
+  background-color: var(--medium-grey);
+  border-radius: 150px 150px 0 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.sc-mask {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  left: 20px;
+  height: 80px;
+  background-color: #ffffff;
+  border-radius: 150px 150px 0 0;
+}
+
+.sc-percentage {
+  position: absolute;
+  top: 100px;
+  left: -200%;
+  width: 400%;
+  height: 400%;
+  margin-left: 100px;
+  background-color: var(--red);
+}
+
+.sc-percentage {
+  transform: rotate(var(--angle));
+  transform-origin: top center;
+}
+
+.sc-min {
+  float: left;
+}
+
+.sc-max {
+  float: right;
+}
+
+.sc-value {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  font-size: 36px;
+  font-weight: 700;
 }/*# sourceMappingURL=index.css.map */
