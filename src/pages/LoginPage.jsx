@@ -2,10 +2,9 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context"; // <== IMPORT
+import API_URL from "../../apiKey";
 
 import Form from "../ui/Form";
-
-const API_URL = "http://localhost:5005";
 
 // const API_URL = "https://scoretwce-backend.onrender.com";
 

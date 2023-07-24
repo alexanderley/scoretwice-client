@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
 import API_URL from "../../apiKey";
+
+import DatePicker from "react-date-picker";
+import "react-date-picker/dist/DatePicker.css";
+import "react-calendar/dist/Calendar.css";
 
 // const API_URL = "http://localhost:5005";
 // const API_URL = "https://scoretwce-backend.onrender.com";
@@ -10,14 +13,21 @@ import API_URL from "../../apiKey";
 function SignupPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [gender, setGender] = useState("");
+  const [birthday, setBirthday] = useState("");
+
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
-  const handleName = (e) => setName(e.target.value);
+  const handleFirstName = (e) => setFirstName(e.target.value);
+  const handleLastName = (e) => setLastName(e.target.value);
+  const handleGender = (e) => setGender(e.target.value);
+  const handleBirthdate = (e) => setBirthday(e.target.value);
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
@@ -54,8 +64,35 @@ function SignupPage(props) {
           onChange={handlePassword}
         />
 
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
+        <label>First Name:</label>
+        <input
+          type="text"
+          name="name"
+          value={firstName}
+          onChange={handleFirstName}
+        />
+
+        <label>Last Name:</label>
+        <input
+          type="text"
+          name="name"
+          value={lastName}
+          onChange={handleLastName}
+        />
+
+        <label>Date of Birth:</label>
+        <DatePicker
+          selected={birthday}
+          onChange={(date) => setBirthday(date)}
+          dateFormat="yyyy-MM-dd"
+        />
+
+        <label>Gender:</label>
+        <select name="gender" value={gender} onChange={handleGender}>
+          <option value="">Select your gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
 
         <button type="submit" className="buttonRed fullWidth">
           Sign Up
