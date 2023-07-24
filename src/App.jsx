@@ -70,10 +70,19 @@ function App() {
             </IsAnon>
           }
         />
-        <Route path="/profile/:id" element={<UserProfilePage />} />
+        <Route
+          path="/profile/:id"
+          element={
+            <IsPrivate>
+              <UserProfilePage />
+            </IsPrivate>
+          }
+        />
       </Routes>
     </div>
   );
 }
 
 export default App;
+
+// http://localhost:5173/profile/64bbe772371846648850c32a
