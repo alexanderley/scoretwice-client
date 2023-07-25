@@ -10,7 +10,7 @@ import UserProfilePage from "./pages/UserProfilePage";
 import CreditScoreForm from "./pages/creditScorePage";
 
 import Footer from "./ui/Footer";
-
+import TransactionsPage from "./pages/TransactionsPage";//<== IMPORT
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage"; // <== IMPORT
 
@@ -84,11 +84,20 @@ function App() {
             </IsPrivate>
           }
         />
+        <Route path="/profile/:id" element={<UserProfilePage />} />
         <Route
-          path="/profile/:id"
+          path="/credit-score/create"
           element={
             <IsPrivate>
-              <UserProfilePage />
+              <CreditScoreForm />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/profile/:id/transactions/"
+          element={
+            <IsPrivate>
+              <TransactionsPage />
             </IsPrivate>
           }
         />
