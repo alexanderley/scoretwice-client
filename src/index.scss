@@ -17,6 +17,7 @@
   --border-grey: #e5e5e5;
   --black: #000000;
   --red: #e94653;
+  --pink: #fff5f7;
 }
 
 #logo {
@@ -27,13 +28,10 @@ body {
   background-color: rgb(223, 223, 223);
   font-family: var(--font-primary);
   font-size: var(--font-s);
+  position: relative;
 }
 
 // Text styling h1,h2,h3, etc...
-
-.textCenter {
-  text-align: center;
-}
 
 h1 {
   color: var(--black);
@@ -58,7 +56,47 @@ p {
   line-height: 150%;
 }
 
-// Ui styling
+//////////////////////////////////  Ui styling! /////////////////////////////
+
+// viewport
+.phoneViewport {
+  width: 390px;
+  background-color: white;
+  height: 100vh;
+  border: 1px solid rgb(207, 207, 207);
+  position: relative;
+}
+
+.appBody {
+  padding: 20px;
+}
+
+// width / heights / paddings
+.centerDiv {
+  margin: 0 auto;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+// text transforms
+.textCenter {
+  text-align: center;
+}
+
+// colors
+.colorRed {
+  color: var(--red);
+}
+
+// Ui components Cards /  Buttons etc.
+.cardContainer {
+  border: 1px solid var(--border-grey);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
 
 .buttonRed {
   border: none;
@@ -67,36 +105,3 @@ p {
   padding: 15px;
   border-radius: 5px;
 }
-
-.fullWidth {
-  width: 100%;
-}
-
-.appBody {
-  padding: 20px;
-}
-
-.centerDiv {
-  margin: 0 auto;
-}
-
-.phoneViewport {
-  width: 390px;
-  background-color: white;
-  height: 100vh;
-  border: 1px solid rgb(207, 207, 207);
-}
-
-.cardContainer {
-  border: 1px solid var(--border-grey);
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-
-// Form Styling
-// .formFlex {
-//   display: flex;
-//   flex-direction: column;
-//   gap: 15px;
-// }

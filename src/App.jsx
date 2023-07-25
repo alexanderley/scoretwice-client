@@ -6,7 +6,11 @@ import ProjectListPage from "./pages/ProjectListPage";
 import ProjectDetailsPage from "./pages/ProjectDetailsPage";
 import EditProjectPage from "./pages/EditProjectPage";
 import UserProfilePage from "./pages/UserProfilePage";
+
 import CreditScoreForm from "./pages/creditScorePage";
+
+import Footer from "./ui/Footer";
+
 
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage"; // <== IMPORT
@@ -78,12 +82,22 @@ function App() {
             <IsPrivate>
               {" "}
               <CreditScoreForm />{" "}
+
+        <Route
+          path="/profile/:id"
+          element={
+            <IsPrivate>
+              <UserProfilePage />
+
             </IsPrivate>
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 }
 
 export default App;
+
+// http://localhost:5173/profile/64bbe772371846648850c32a

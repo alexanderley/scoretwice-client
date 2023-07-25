@@ -70,6 +70,7 @@ function AuthProviderWrapper(props) {
     <AuthContext.Provider
       value={{
         isLoggedIn,
+        setIsLoggedIn,
         isLoading,
         user,
         storeToken,
