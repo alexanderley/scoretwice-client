@@ -4,28 +4,29 @@ import axios from "axios";
 import API_URL from "../../../apiKey";
 import Footer from "../../ui/Footer";
 import styles from "./creditscore.module.css";
+import DatePicker from "react-date-picker";
+import "react-date-picker/dist/DatePicker.css";
+import "react-calendar/dist/Calendar.css";
 
 // const API_URL = "http://localhost:5005";
 // const API_URL = "https://scoretwce-backend.onrender.com";
 
 function CreditScoreForm(props) {
-  const [carOwned, setCarOwned] = useState("");
-  const [propertyOwned, setPropertyOwned] = useState("");
+  const [carOwned, setCarOwned] = useState(false);
+  const [propertyOwned, setPropertyOwned] = useState(false);
   const [childrenCount, setChildrenCount] = useState("");
   const [annualIncome, setAnnualIncome] = useState("");
   const [educationLevel, setEducationLevel] = useState("");
   const [maritalStatus, setMaritalStatus] = useState("");
   const [daysFromEmployment, setDaysFromEmployment] = useState("");
-  const [ownedEmail, setOwnedEmail] = useState("");
-  const [ownedWorkphone, setOwnedWorkphone] = useState("");
-  const [creditStatus, setCreditStatus] = useState("");
+  const [ownedEmail, setOwnedEmail] = useState(false);
+  const [ownedWorkphone, setOwnedWorkphone] = useState(false);
+  const [creditStatus, setCreditStatus] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
 
-  const handleCarOwned = (e) => setCarOwned(e.target.value);
-  const handlePropertyOwned = (e) => setPropertyOwned(e.target.value);
   const handleChildrenCount = (e) => {
     const value = e.target.value;
     // Check if the value is a valid number within the specified range or an empty string
@@ -44,10 +45,6 @@ function CreditScoreForm(props) {
   };
   const handleEducationLevel = (e) => setEducationLevel(e.target.value);
   const handleMaritalStatus = (e) => setMaritalStatus(e.target.value);
-  const handleDaysFromEmployment = (e) => setDaysFromEmployment(e.target.value);
-  const handleOwnedEmail = (e) => setOwnedEmail(e.target.value);
-  const handleOwnedWorkphone = (e) => setOwnedWorkphone(e.target.value);
-  const handleCreditstatus = (e) => setCreditStatus(e.target.value);
 
   const handleCreditScoreSubmit = (e) => {
     e.preventDefault();
@@ -65,11 +62,17 @@ function CreditScoreForm(props) {
       creditStatus,
     };
 
+    const requestHeaders = {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
+    };
+
     // Make an axios request to the API
     // If the POST request is a successful redirect to the login page
     // If the request resolves with an error, set the error message in the state
     axios
-      .post(`${API_URL}/api/credit-score`, requestBody)
+      .post(`${API_URL}/api/credit-score`, requestBody, requestHeaders)
       .then((response) => {
         navigate("/credit-score/create");
       })
@@ -96,9 +99,9 @@ function CreditScoreForm(props) {
             <input
               type="radio"
               name="carOwned"
-              value={true}
-              checked={carOwned}
-              onChange={handleCarOwned}
+              value="true"
+              checked={carOwned === true}
+              onChange={() => setCarOwned(true)}
             />
             <label>Yes</label>
           </div>
@@ -106,9 +109,9 @@ function CreditScoreForm(props) {
             <input
               type="radio"
               name="carOwned"
-              value={false}
-              checked={carOwned}
-              onChange={handleCarOwned}
+              value="false"
+              checked={carOwned === false}
+              onChange={() => setCarOwned(false)}
             />
             <label>No</label>
           </div>
@@ -120,9 +123,9 @@ function CreditScoreForm(props) {
             <input
               type="radio"
               name="propertyOwned"
-              value={true}
-              checked={propertyOwned}
-              onChange={handlePropertyOwned}
+              value="true"
+              checked={propertyOwned === true}
+              onChange={() => setPropertyOwned(true)}
             />
             <label>Yes</label>
           </div>
@@ -130,9 +133,9 @@ function CreditScoreForm(props) {
             <input
               type="radio"
               name="propertyOwned"
-              value={false}
-              checked={propertyOwned}
-              onChange={handlePropertyOwned}
+              value="false"
+              checked={propertyOwned === false}
+              onChange={() => setPropertyOwned(false)}
             />
             <label>No</label>
           </div>
@@ -189,12 +192,92 @@ function CreditScoreForm(props) {
           onChange={handleMaritalStatus}
         >
           <option value="">Select</option>
-          <option value="lower secondary">Lower Secondary</option>
-          <option value="secondary">Secondary</option>
-          <option value="incomplete higher">Incomplete Higher</option>
-          <option value="higher education">Higher Education</option>
-          <option value="academic degree">Academic Degree</option>
+          <option value="Married">Married</option>
+          <option value="Single/ not married">Single/ not married</option>
+          <option value="Separated">Separated</option>
+          <option value="Widow">Widow</option>
+          <option value="Civil Marriage">Civil Marriage</option>
         </select>
+
+        <label>Do you use email?</label>
+        <div className={styles.radioContainer}>
+          <div className={styles.containerDiv}>
+            <input
+              type="radio"
+              name="ownedEmail"
+              value="true"
+              checked={ownedEmail === true}
+              onChange={() => setOwnedEmail(true)}
+            />
+            <label>Yes</label>
+          </div>
+          <div className={styles.containerDiv}>
+            <input
+              type="radio"
+              name="ownedEmail"
+              value="false"
+              checked={ownedEmail === false}
+              onChange={() => setOwnedEmail(false)}
+            />
+            <label>No</label>
+          </div>
+        </div>
+
+        <label>When did you first start working?</label>
+        <DatePicker
+          className={styles.workDate}
+          value={daysFromEmployment}
+          onChange={setDaysFromEmployment}
+          dateFormat="yyyy-MM-dd"
+        />
+
+        <label>Does your employer provide you with a workphone?</label>
+        <div className={styles.radioContainer}>
+          <div className={styles.containerDiv}>
+            <input
+              type="radio"
+              name="ownedWorkphone"
+              value="true"
+              checked={ownedWorkphone === true}
+              onChange={() => setOwnedWorkphone(true)}
+            />
+            <label>Yes</label>
+          </div>
+          <div className={styles.containerDiv}>
+            <input
+              type="radio"
+              name="ownedWorkphone"
+              value="false"
+              checked={ownedWorkphone === false}
+              onChange={() => setOwnedWorkphone(false)}
+            />
+            <label>No</label>
+          </div>
+        </div>
+
+        <label>Do you have any current credits/loans?</label>
+        <div className={styles.radioContainer}>
+          <div className={styles.containerDiv}>
+            <input
+              type="radio"
+              name="creditStatus"
+              value="true"
+              checked={creditStatus === true}
+              onChange={() => setCreditStatus(true)}
+            />
+            <label>Yes</label>
+          </div>
+          <div className={styles.containerDiv}>
+            <input
+              type="radio"
+              name="creditStatus"
+              value="false"
+              checked={creditStatus === false}
+              onChange={() => setCreditStatus(false)}
+            />
+            <label>No</label>
+          </div>
+        </div>
 
         <button type="submit" className="buttonRed fullWidth">
           Calculate Credit Score
