@@ -6,6 +6,7 @@ import ProjectListPage from "./pages/ProjectListPage";
 import ProjectDetailsPage from "./pages/ProjectDetailsPage";
 import EditProjectPage from "./pages/EditProjectPage";
 import UserProfilePage from "./pages/UserProfilePage";
+import SettingsPage from "./pages/SettingsPage";
 
 import CreditScoreForm from "./pages/creditScorePage";
 
@@ -20,7 +21,7 @@ import IsAnon from "./components/IsAnon"; // <== IMPORT
 function App() {
   return (
     <div className="App appBody">
-      <Navbar />
+      {/* <Navbar /> */}
 
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -90,6 +91,14 @@ function App() {
           element={
             <IsPrivate>
               <UserProfilePage />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/settings/:id"
+          element={
+            <IsPrivate>
+              <SettingsPage />
             </IsPrivate>
           }
         />
