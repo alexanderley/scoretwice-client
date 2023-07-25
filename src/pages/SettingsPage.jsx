@@ -11,8 +11,7 @@ export default function SettingsPage() {
 
   const navigate = useNavigate();
 
-  const { storeToken, setIsLoggedIn, storedToken } = useContext(AuthContext);
-
+  const storedToken = localStorage.getItem("authToken");
   const { id } = useParams();
 
   const handleEmail = (e) => setEmail(e.target.value);
@@ -23,26 +22,39 @@ export default function SettingsPage() {
     e.preventDefault();
     const requestBody = { email, password };
 
-    axios.put(`${API_URL}/api/users/${id}`, requestBody).then((response) => {
-      console.log("reponse change data: ", response.data);
-    });
+    // check whatever hasb been added in the for
+    // let assert = () => {
+    //     console.log("these are password and email:", password, email);
+    //     if (email && password) {
+    //       return { email, password };
+    //     } else if (email && !password) {
+    //       return { email };
+    //     } else if (!email && password) {
+    //       return { password };
+    //     } else {
+    //       return {};
+    //     }
+    //   };
 
-    // axios
-    //   .post(`${API_URL}/auth/login`, requestBody)
+    //   result = assert();
+    // console.log(result);
 
-    //   .then((response) => {
-    //     console.log("JWT token", response.data.authToken);
-    //     console.log("Data foundUser Id: ", response.data.foundUser._id);
-    //     const userId = response.data.foundUser._id;
-    //     storeToken(response.data.authToken);
-    //     // authenticateUser();
-    //     setIsLoggedIn(true);
-    //     navigate(`/profile/${userId}`);
+    //   Update the user
+    //   User.findByIdAndUpdate(_id, result, { new: true })
+    //   .then((updatedUser) => {
+    //     req.session.currentUser = updatedUser;
+    //     console.log("User updated: ", updatedUser);
+    //     res.redirect("/userProfile");
     //   })
-    //   .catch((error) => {
-    //     const errorDescription = error.response.data.message;
-    //     setErrorMessage(errorDescription);
-    //   });
+    //   .catch((error) => next(error));
+
+    axios
+      .put(`${API_URL}/api/users/${id}`, requestBody, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        console.log("reponse change data: ", response.data);
+      });
   };
 
   return (
