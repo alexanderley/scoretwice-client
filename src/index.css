@@ -24,6 +24,11 @@ body {
   font-family: var(--font-primary);
   font-size: var(--font-s);
   position: relative;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 h1 {
@@ -58,6 +63,8 @@ p {
 
 .appBody {
   padding: 20px;
+  height: 100vh;
+  overflow: auto;
 }
 
 .centerDiv {
@@ -79,7 +86,7 @@ p {
 .cardContainer {
   border: 1px solid var(--border-grey);
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
