@@ -11,7 +11,7 @@ import SettingsPage from "./pages/SettingsPage";
 import CreditScoreForm from "./pages/creditScorePage";
 
 import Footer from "./ui/Footer";
-import TransactionsPage from "./pages/TransactionsPage";//<== IMPORT
+import TransactionsPage from "./pages/TransactionsPage"; //<== IMPORT
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage"; // <== IMPORT
 
