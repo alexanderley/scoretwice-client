@@ -5,8 +5,8 @@ import API_URL from "../../apiKey";
 
 const TransactionsPage = () => {
   const { id: senderIdFromURL } = useParams();
-  const [amount, setAmount] = useState();
-  const [transferMessage, setTransferMessage] = useState();
+  const [amount, setAmount] = useState("");
+  const [transferMessage, setTransferMessage] = useState("");
   const [receiverOptions, setReceiverOptions] = useState([]);
   const [selectedReceiverId, setSelectedReceiverId] = useState("");
   const [senderId, setSenderId] = useState(senderIdFromURL);
@@ -101,7 +101,12 @@ const TransactionsPage = () => {
         </label>
         <label>
           Amount:
-          <input type="number" value={amount} onChange={handleAmountChange} placeholder="Enter amount in €"/>
+          <input
+            type="number"
+            value={amount}
+            onChange={handleAmountChange}
+            placeholder="Enter amount in €"
+          />
         </label>
         <label>
           Bank purpose:
@@ -146,7 +151,6 @@ const TransactionsPage = () => {
                 <br />
                 Transfer Message: {transaction.transferMessage}
                 <br />
-                {/* Add any other fields you want to display */}
               </li>
             ))}
           </ul>

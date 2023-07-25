@@ -21,7 +21,7 @@ import IsAnon from "./components/IsAnon"; // <== IMPORT
 function App() {
   return (
     <div className="App appBody">
-      {/* <Navbar /> */}
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
