@@ -26,8 +26,22 @@ function CreditScoreForm(props) {
 
   const handleCarOwned = (e) => setCarOwned(e.target.value);
   const handlePropertyOwned = (e) => setPropertyOwned(e.target.value);
-  const handleChildrenCount = (e) => setChildrenCount(e.target.value);
-  const handleAnnualIncome = (e) => setAnnualIncome(e.target.value);
+  const handleChildrenCount = (e) => {
+    const value = e.target.value;
+    // Check if the value is a valid number within the specified range or an empty string
+    if (value === "" || (parseInt(value) >= 0 && parseInt(value) <= 10)) {
+      // Update the state with the entered value
+      setChildrenCount(value);
+    }
+  };
+  const handleAnnualIncome = (e) => {
+    const value = e.target.value;
+    // Check if the value is a valid number within the specified range or an empty string
+    if (value === "" || (parseInt(value) >= 0 && parseInt(value) <= 1000000)) {
+      // Update the state with the entered value
+      setAnnualIncome(value);
+    }
+  };
   const handleEducationLevel = (e) => setEducationLevel(e.target.value);
   const handleMaritalStatus = (e) => setMaritalStatus(e.target.value);
   const handleDaysFromEmployment = (e) => setDaysFromEmployment(e.target.value);
@@ -78,27 +92,92 @@ function CreditScoreForm(props) {
       >
         <label>Do you own a car?</label>
         <div className={styles.radioContainer}>
-          <div>
+          <div className={styles.containerDiv}>
             <input
               type="radio"
               name="carOwned"
-              value="yes"
-              checked={carOwned === true}
+              value={true}
+              checked={carOwned}
               onChange={handleCarOwned}
             />
             <label>Yes</label>
           </div>
-          <div>
+          <div className={styles.containerDiv}>
             <input
               type="radio"
               name="carOwned"
-              value="no"
-              checked={carOwned === false}
+              value={false}
+              checked={carOwned}
               onChange={handleCarOwned}
             />
             <label>No</label>
           </div>
         </div>
+
+        <label>Do you own any property?</label>
+        <div className={styles.radioContainer}>
+          <div className={styles.containerDiv}>
+            <input
+              type="radio"
+              name="propertyOwned"
+              value={true}
+              checked={propertyOwned}
+              onChange={handlePropertyOwned}
+            />
+            <label>Yes</label>
+          </div>
+          <div className={styles.containerDiv}>
+            <input
+              type="radio"
+              name="propertyOwned"
+              value={false}
+              checked={propertyOwned}
+              onChange={handlePropertyOwned}
+            />
+            <label>No</label>
+          </div>
+        </div>
+
+        <label>How many children/dependants do you have?</label>
+        <div className={styles.radioContainer}>
+          <div className={styles.containerDiv}>
+            <input
+              type="number"
+              name="childrenCount"
+              value={childrenCount}
+              onChange={handleChildrenCount}
+              min="0"
+              max="10"
+              step="1"
+            />
+          </div>
+        </div>
+
+        <label>What is your annual income?</label>
+        <div className={styles.radioContainer}>
+          <div className={styles.containerDiv}>
+            <input
+              type="number"
+              name="annualIncome"
+              value={annualIncome}
+              onChange={handleAnnualIncome}
+              min="0"
+              max="1000000"
+              step="1"
+            />
+          </div>
+        </div>
+
+        <label>What is your level of education?</label>
+        <select
+          name="educationLevel"
+          value={educationLevel}
+          onChange={handleEducationLevel}
+        >
+          <option value="">Select your gender</option>
+          <option value="1">Male</option>
+          <option value="0">Female</option>
+        </select>
 
         <button type="submit" className="buttonRed fullWidth">
           Calculate Credit Score
@@ -106,9 +185,6 @@ function CreditScoreForm(props) {
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
     </div>
   );
 }
