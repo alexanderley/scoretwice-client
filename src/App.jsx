@@ -11,7 +11,6 @@ import CreditScoreForm from "./pages/creditScorePage";
 
 import Footer from "./ui/Footer";
 
-
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage"; // <== IMPORT
 
@@ -82,13 +81,14 @@ function App() {
             <IsPrivate>
               {" "}
               <CreditScoreForm />{" "}
-
+            </IsPrivate>
+          }
+        />
         <Route
           path="/profile/:id"
           element={
             <IsPrivate>
               <UserProfilePage />
-
             </IsPrivate>
           }
         />
