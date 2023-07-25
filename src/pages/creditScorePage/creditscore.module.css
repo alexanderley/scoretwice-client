@@ -5,9 +5,16 @@
   justify-content: stretch;
   gap: 15px;
   line-height: 15px;
+  margin-bottom: 150px;
 }
 
-input {
+h1,
+h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.creditScoreForm input {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -34,4 +41,13 @@ input {
 .radioContainer label {
   margin-right: 10px;
   align-items: center;
+}
+
+.containerDiv {
+  display: flex;
+}
+
+.containerDiv,
+input {
+  margin-right: 12px;
 }
