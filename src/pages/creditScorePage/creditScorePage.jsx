@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import API_URL from "../../../apiKey";
 import Footer from "../../ui/Footer";
+import ProgressSemicircle from "../../components/progress-semicircle/ProgressSemicircle";
 
 export default function CreditScorePage() {
   const storedToken = localStorage.getItem("authToken");
@@ -35,6 +36,12 @@ export default function CreditScorePage() {
         <div>
           <h1>Credit Score</h1>
           <h3>here is your credit score, you dumb bitch</h3>
+          <div>
+            <ProgressSemicircle
+              value={creditScore.creditScoreGrade}
+              maxValue={1000}
+            />
+          </div>
           <div>{creditScore.creditScoreGrade}</div>
         </div>
       )}
