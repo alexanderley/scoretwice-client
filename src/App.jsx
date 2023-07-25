@@ -84,7 +84,6 @@ function App() {
             </IsPrivate>
           }
         />
-
         <Route
           path="/profile/:id"
           element={
