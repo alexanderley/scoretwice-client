@@ -7,7 +7,7 @@ import ProjectDetailsPage from "./pages/ProjectDetailsPage";
 import EditProjectPage from "./pages/EditProjectPage";
 import UserProfilePage from "./pages/UserProfilePage";
 
-import CreditScoreForm from "./pages/creditScorePage";
+import CreditScoreForm from "./pages/creditScorePage/creditScoreForm";
 
 import Footer from "./ui/Footer";
 
@@ -16,6 +16,7 @@ import LoginPage from "./pages/LoginPage"; // <== IMPORT
 
 import IsPrivate from "./components/IsPrivate"; // <== IMPORT
 import IsAnon from "./components/IsAnon"; // <== IMPORT
+import CreditScorePage from "./pages/creditScorePage/creditScorePage";
 
 function App() {
   return (
@@ -84,6 +85,17 @@ function App() {
             </IsPrivate>
           }
         />
+
+        <Route
+          path="/credit-score"
+          element={
+            <IsPrivate>
+              {" "}
+              <CreditScorePage />{" "}
+            </IsPrivate>
+          }
+        />
+
         <Route
           path="/profile/:id"
           element={
