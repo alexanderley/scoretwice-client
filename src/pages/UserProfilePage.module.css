@@ -1,0 +1,8 @@
+.balanceContainer {
+  background-color: var(--pink);
+  padding: 5px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+}

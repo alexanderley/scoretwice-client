@@ -6,6 +6,7 @@ import ProjectListPage from "./pages/ProjectListPage";
 import ProjectDetailsPage from "./pages/ProjectDetailsPage";
 import EditProjectPage from "./pages/EditProjectPage";
 import UserProfilePage from "./pages/UserProfilePage";
+import Footer from "./ui/Footer";
 
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage"; // <== IMPORT
@@ -79,6 +80,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 }
