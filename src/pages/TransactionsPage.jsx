@@ -202,7 +202,7 @@ const TransactionsPage = () => {
 
         <div className="cardContainer">
         <label className="formContainerLabel">
-            <FontAwesomeIcon icon={faBarcode} /> Deposit amount</label>
+            <FontAwesomeIcon icon={faBarcode} />Deposit amount</label>
         <form onSubmit={handleDepositSubmit}>
           <label className="formContainerLabel">
             <input
