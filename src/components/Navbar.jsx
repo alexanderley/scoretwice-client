@@ -18,7 +18,11 @@ function Navbar() {
       <Link to="/">
         <button>Home</button>
       </Link>
-
+      {isLoggedIn && (
+        <Link to="/profile/64beb00492fd576bfc5014ec/transactions">
+          <button>Transactions</button>
+        </Link>
+      )}
       {/*    UPDATE     */}
       {isLoggedIn && (
         <>
@@ -27,6 +31,7 @@ function Navbar() {
           </Link>
           <button onClick={logOutUser}>Logout</button>
         </>
+
       )}
 
       {!isLoggedIn && (
