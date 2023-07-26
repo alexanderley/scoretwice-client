@@ -4,6 +4,18 @@ import axios from "axios";
 import API_URL from "../../apiKey";
 import styles from "../pages/TransactionPage.css";
 import Footer from "../ui/Footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMoneyBillTransfer,
+  faBuildingColumns,
+  faCommentsDollar,
+  faPiggyBank,
+  faIdCard,
+  faMoneyBill,
+  faBarcode,
+  faMoneyBillWave,
+  
+} from "@fortawesome/free-solid-svg-icons";
 
 const TransactionsPage = () => {
   const { id: senderIdFromURL } = useParams();
@@ -136,7 +148,7 @@ const TransactionsPage = () => {
         <form onSubmit={handleSubmit} className="cardContainer">
           <div>
             <label className="formContainerLabel">
-              Sender ID:<br></br>
+            <FontAwesomeIcon icon={faBarcode} /> Sender ID
               <input
                 type="text"
                 value={senderId}
@@ -145,18 +157,18 @@ const TransactionsPage = () => {
               />
             </label>
             <label className="formContainerLabel">
-              Amount:
-              <br></br>
+            <FontAwesomeIcon icon={faMoneyBill} /> Amount
+              
               <input
                 type="number"
                 value={amount}
                 onChange={handleAmountChange}
-                placeholder="Enter amount in €"
+                placeholder="Enter amount in $"
                 className="formContainerInput"
               />
             </label>
             <label className="formContainerLabel">
-              Bank purpose:<br></br>
+            <FontAwesomeIcon icon={faCommentsDollar} /> Bank purpose
               <input
                 type="text"
                 value={transferMessage}
@@ -166,13 +178,13 @@ const TransactionsPage = () => {
               />
             </label>
             <label className="formContainerLabel">
-              Receiver:
+            <FontAwesomeIcon icon={faMoneyBillWave} /> Receiver
               <select
                 value={selectedReceiverId}
                 onChange={handleReceiverChange}
                 className="formContainerInput"
               >
-                <option value="">Select Receiver</option>
+                <option value="">Select a receiver</option>
                 {receiverOptions.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
@@ -183,24 +195,26 @@ const TransactionsPage = () => {
           </div>
           <br></br>
           <button className="buttonRedNew" type="submit">
-            Transaction
+          <FontAwesomeIcon icon={faMoneyBillTransfer} /> Transfer
           </button>
         </form>
         
 
         <div className="cardContainer">
+        <label className="formContainerLabel">
+            <FontAwesomeIcon icon={faBarcode} /> Deposit amount</label>
         <form onSubmit={handleDepositSubmit}>
           <label className="formContainerLabel">
             <input
               type="number"
               value={depositAmount}
               onChange={handleDepositChange}
-              placeholder="Enter deposit amount in €"
+              placeholder="Enter deposit amount in $"
               className="formContainerInput"
             />
           </label>
           <button className="buttonRedNew" type="submit">
-            Deposit
+          <FontAwesomeIcon icon={faBuildingColumns} /> Deposit
           </button>
         </form>
       </div>
@@ -215,26 +229,39 @@ const TransactionsPage = () => {
               <li className="cardContainerTransactions" key={transaction._id}>
                 {transaction.sender === senderId ? (
                   <>
-                    <strong>sended</strong>
-                    <br></br>
+
+
+
+                    <strong><FontAwesomeIcon icon={faIdCard} /></strong>
+                    
                     <strong>{transaction.receiver}</strong>
+
                     <span className="amountpositive">
-                      -{transaction.amount}€
+                      -{transaction.amount}$
                     </span>
+
+
                   </>
                 ) : (
                   <>
-                    <strong>received</strong>
-                    <br></br>
+
+
+
+                    <strong><FontAwesomeIcon icon={faIdCard} /></strong>
+                    
                     <strong>{transaction.sender}</strong>
+
                     <span className="amountnegative">
-                      +{transaction.amount}€
+                      +{transaction.amount}$
                     </span>
+
+
+
                   </>
                 )}
                 <br />
                 <div className="cardContainer">
-                  Bank purpose: {transaction.transferMessage}
+                <FontAwesomeIcon icon={faCommentsDollar} /> Bank purpose: {transaction.transferMessage}
                 </div>
 
                 <br />
