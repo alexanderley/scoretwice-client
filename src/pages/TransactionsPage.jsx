@@ -94,75 +94,102 @@ const TransactionsPage = () => {
   }, [storedToken]);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Sender ID:
-          <input type="text" value={senderId} readOnly />
+    <div >
+      <form onSubmit={handleSubmit} className="cardContainer">
+      <div >
+        <label className="formContainerLabel">
+          Sender ID:<br></br>
+          <input type="text" value={senderId} readOnly   className="formContainerInput"/>
         </label>
-        <label>
+        <label className="formContainerLabel">
           Amount:
+          <br></br>
           <input
             type="number"
             value={amount}
             onChange={handleAmountChange}
             placeholder="Enter amount in €"
+            className="formContainerInput"
           />
         </label>
-        <label>
-          Bank purpose:
+        <label className="formContainerLabel">
+          Bank purpose:<br></br>
           <input
             type="text"
             value={transferMessage}
             onChange={handleTransferMessageChange}
             placeholder="Enter the purpose of the transaction"
+            className="formContainerInput"
           />
         </label>
-        <label>
+        <label className="formContainerLabel">
           Receiver:
-          <select value={selectedReceiverId} onChange={handleReceiverChange}>
+          <select value={selectedReceiverId} onChange={handleReceiverChange}   className="formContainerInput">
             <option value="">Select Receiver</option>
             {receiverOptions.map((option) => (
-              <option key={option.value} value={option.value}>
+              <option key={option.value} value={option.value} >
                 {option.label}
               </option>
             ))}
           </select>
         </label>
-        <button className="buttonRed" type="submit">Make Transaction</button>
+        </div><br></br>
+        <button className="buttonRedNew" type="submit">
+          Make Transaction
+        </button>
       </form>
 
+
+
+
+
+
+
+
       <div>
-        
-        {userTransactions.length > 0 ? (
-          
-          <ul className="cardContainer">
-          <h3 className="h3Class">Your transactions:</h3>
-            {userTransactions.map((transaction) => (
-              <li className="cardContainerTransactions" key={transaction._id}>
-                {transaction.sender === senderId ? (
-                  
-                  <>
-                    <strong>You</strong> sent: {transaction.amount}€ <br></br>to{" "}
-                    {transaction.receiver}
-                  </>
-                ) : (
-                  <>
-                    <strong>{transaction.sender}</strong> sent:{" "}
-                    {transaction.amount}€ <br></br>to you
-                  </>
-                  
-                )}
-                <br />
-                Transfer Message: {transaction.transferMessage}
-                <br />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No transactions found for the user.</p>
-        )}
-      </div>
+  {userTransactions.length > 0 ? (
+    <ul className="cardContainerInvisible">
+      <h3 className="h3Class">Your transactions:</h3>
+      {userTransactions.map((transaction) => (
+        <li className="cardContainerTransactions" key={transaction._id}>
+          {transaction.sender === senderId ? (
+            <>
+              <strong>sended</strong><br></br>
+              <strong>{transaction.receiver}</strong>
+              <span className="amount">-{transaction.amount}€</span>
+            </>
+          ) : (
+            <>
+            <strong>received</strong><br></br>
+              <strong>{transaction.sender}</strong>
+              <span className="amount">+{transaction.amount}€</span>
+            </>
+          )}
+          <br />
+          Transfer Message: {transaction.transferMessage}
+          <br />
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p>No transactions found for the user.</p>
+  )}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
   );
 };
