@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import API_URL from "../../apiKey";
 import styles from "../pages/TransactionPage.css";
+import Footer from "../ui/Footer";
 
 const TransactionsPage = () => {
   const { id: senderIdFromURL } = useParams();
@@ -95,6 +96,7 @@ const TransactionsPage = () => {
 
   return (
     <div >
+    <div className="bottomMargin">
       <form onSubmit={handleSubmit} className="cardContainer">
       <div >
         <label className="formContainerLabel">
@@ -154,19 +156,23 @@ const TransactionsPage = () => {
         <li className="cardContainerTransactions" key={transaction._id}>
           {transaction.sender === senderId ? (
             <>
+           
               <strong>sended</strong><br></br>
               <strong>{transaction.receiver}</strong>
-              <span className="amount">-{transaction.amount}€</span>
+              <span className="amountpositive">-{transaction.amount}€</span>
             </>
           ) : (
             <>
             <strong>received</strong><br></br>
               <strong>{transaction.sender}</strong>
-              <span className="amount">+{transaction.amount}€</span>
+              <span className="amountnegative">+{transaction.amount}€</span>
             </>
           )}
           <br />
-          Transfer Message: {transaction.transferMessage}
+          <div className="cardContainer">
+          Bank purpose: {transaction.transferMessage}
+          </div>
+         
           <br />
         </li>
       ))}
@@ -174,6 +180,7 @@ const TransactionsPage = () => {
   ) : (
     <p>No transactions found for the user.</p>
   )}
+</div>
 </div>
 
 
@@ -184,9 +191,7 @@ const TransactionsPage = () => {
 
 
 
-
-
-
+<Footer></Footer>
 
 
 

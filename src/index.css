@@ -9,9 +9,11 @@
   --font-xs: 12px;
   --white: #ffffff;
   --medium-grey: #dddddd;
+  --light-grey: #fbfbfb;
   --border-grey: #e5e5e5;
   --black: #000000;
   --red: #e94653;
+  --green: #46e95c;
   --red-dark: #a81e29;
   --pink: #fff5f7;
   --green: #f5fff5;
@@ -102,4 +104,4 @@ p {
 
 .isActive {
   text-decoration: none;
-}/*# sourceMappingURL=index.css.map */
+} /*# sourceMappingURL=index.css.map */
