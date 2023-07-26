@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
+import BackButton from "../ui/BackButton";
+
 import API_URL from "../../apiKey";
 
 export default function SettingsPage() {
@@ -43,6 +45,7 @@ export default function SettingsPage() {
 
   return (
     <div className="LoginPage">
+      <BackButton to={`/profile/${id}`} />
       <h1 className="textCenter">
         Change <br /> Settings
       </h1>
