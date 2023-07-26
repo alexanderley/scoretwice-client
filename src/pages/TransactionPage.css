@@ -1,0 +1,20 @@
+.buttonRed {
+    border: none;
+    color: white;
+    background-color: var(--red);
+    padding: 15px;
+    margin-bottom:15px;
+    border-radius: 10px;
+  }
+  .cardContainerTransactions {
+    border: 1px solid var(--border-grey);
+    padding: 15px;
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    font-size:10px;
+    list-style:none
+  }
+  .h3Class{
+   margin-left:7px; 
+  }

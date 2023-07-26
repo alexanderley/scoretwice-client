@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import API_URL from "../../apiKey";
+import styles from "../pages/TransactionPage.css";
 
 const TransactionsPage = () => {
   const { id: senderIdFromURL } = useParams();
@@ -128,25 +129,29 @@ const TransactionsPage = () => {
             ))}
           </select>
         </label>
-        <button type="submit">Make Transaction</button>
+        <button className="buttonRed" type="submit">Make Transaction</button>
       </form>
 
       <div>
-        <h2>User Transactions</h2>
+        
         {userTransactions.length > 0 ? (
-          <ul>
+          
+          <ul className="cardContainer">
+          <h3 className="h3Class">Your transactions:</h3>
             {userTransactions.map((transaction) => (
-              <li key={transaction._id}>
+              <li className="cardContainerTransactions" key={transaction._id}>
                 {transaction.sender === senderId ? (
+                  
                   <>
-                    <strong>You</strong> sent: {transaction.amount} to{" "}
+                    <strong>You</strong> sent: {transaction.amount}€ <br></br>to{" "}
                     {transaction.receiver}
                   </>
                 ) : (
                   <>
                     <strong>{transaction.sender}</strong> sent:{" "}
-                    {transaction.amount} to you
+                    {transaction.amount}€ <br></br>to you
                   </>
+                  
                 )}
                 <br />
                 Transfer Message: {transaction.transferMessage}
