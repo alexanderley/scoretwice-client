@@ -32,7 +32,7 @@ export default function SemiCircleChart({ min, max, value }) {
 
   return (
     <div className={styles.scGauge}>
-      <h1 className="textCenter">Credit Score</h1>
+      <h2 className="textCenter">Credit Score</h2>
       <div className={styles.scBackground}>
         <div className={styles.scPercentage} style={style}></div>
         <div className={styles.scMask}></div>

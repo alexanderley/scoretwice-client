@@ -12,6 +12,7 @@
   --border-grey: #e5e5e5;
   --black: #000000;
   --red: #e94653;
+  --red-dark: #a81e29;
   --pink: #fff5f7;
 }
 
@@ -85,7 +86,7 @@ p {
 
 .cardContainer {
   border: 1px solid var(--border-grey);
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
@@ -95,5 +96,9 @@ p {
   color: white;
   background-color: var(--red);
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 10px;
+}
+
+.isActive {
+  text-decoration: none;
 }/*# sourceMappingURL=index.css.map */

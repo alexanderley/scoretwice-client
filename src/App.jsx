@@ -6,11 +6,12 @@ import ProjectListPage from "./pages/ProjectListPage";
 import ProjectDetailsPage from "./pages/ProjectDetailsPage";
 import EditProjectPage from "./pages/EditProjectPage";
 import UserProfilePage from "./pages/UserProfilePage";
+import SettingsPage from "./pages/SettingsPage";
 
 import CreditScoreForm from "./pages/creditScorePage/creditScoreForm";
 
 import Footer from "./ui/Footer";
-
+import TransactionsPage from "./pages/TransactionsPage";//<== IMPORT
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage"; // <== IMPORT
 
@@ -86,6 +87,7 @@ function App() {
           }
         />
 
+
         <Route
           path="/credit-score"
           element={
@@ -96,11 +98,30 @@ function App() {
           }
         />
 
+
+        <Route path="/profile/:id" element={<UserProfilePage />} />
         <Route
-          path="/profile/:id"
+          path="/credit-score/create"
           element={
             <IsPrivate>
-              <UserProfilePage />
+              <CreditScoreForm />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/profile/:id/transactions/"
+          element={
+            <IsPrivate>
+              <TransactionsPage />
+            </IsPrivate>
+          }
+        />
+
+        <Route
+          path="/settings/:id"
+          element={
+            <IsPrivate>
+              <SettingsPage />
             </IsPrivate>
           }
         />

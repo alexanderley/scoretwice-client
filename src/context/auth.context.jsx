@@ -53,6 +53,7 @@ function AuthProviderWrapper(props) {
   const removeToken = () => {
     // Upon logout, remove the token from the localStorage
     localStorage.removeItem("authToken");
+    window.location.href = "/login";
   };
 
   const logOutUser = () => {
