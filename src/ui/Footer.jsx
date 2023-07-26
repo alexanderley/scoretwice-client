@@ -14,12 +14,20 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.footerBtnContainer}>
-        <div className={styles.roundBtn}>
-          <FontAwesomeIcon icon={faUser} style={{ color: "white" }} />
+      <NavLink
+        to={`/profile/${id}`}
+        style={({ isActive }) => ({
+          color: isActive ? "#fff" : "#545e6f",
+          background: isActive ? "#7600dc" : "#f0f0f0",
+        })}
+      >
+        <div className={styles.footerBtnContainer}>
+          <div className={styles.roundBtn}>
+            <FontAwesomeIcon icon={faUser} style={{ color: "white" }} />
+          </div>
+          <span className={styles.span}>Profile</span>
         </div>
-        <span className={styles.span}>Profile</span>
-      </div>
+      </NavLink>
 
       <div className={styles.footerBtnContainer}>
         <div className={styles.roundBtn}>
@@ -45,7 +53,7 @@ export default function Footer() {
             <div className={styles.roundBtn}>
               <FontAwesomeIcon icon={faGear} style={{ color: "white" }} />
             </div>
-            <span className={styles.span}>CreditScore</span>
+            <span className={styles.span}>Settings</span>
           </div>
         </NavLink>
       </div>
