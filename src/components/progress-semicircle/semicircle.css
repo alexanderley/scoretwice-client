@@ -1,4 +1,21 @@
 .progress-container {
-  width: 100px; /* Adjust the size of the progress container */
-  height: 100px;
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+.CircularProgressbar {
+  transition: stroke-dashoffset 0.5s;
+}
+
+.CircularProgressbar .CircularProgressbar-trail {
+  transition: stroke-dashoffset 0.5s;
+}
+
+.CircularProgressbar .CircularProgressbar-path {
+  transition: stroke-dashoffset 0.5s;
+}
+
+.CircularProgressbar .CircularProgressbar-text {
+  transition: opacity 0.2s;
 }

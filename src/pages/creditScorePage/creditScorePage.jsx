@@ -4,6 +4,7 @@ import axios from "axios";
 import API_URL from "../../../apiKey";
 import Footer from "../../ui/Footer";
 import ProgressSemicircle from "../../components/progress-semicircle/ProgressSemicircle";
+import styles from "./creditscore.module.css";
 
 export default function CreditScorePage() {
   const storedToken = localStorage.getItem("authToken");
@@ -36,7 +37,7 @@ export default function CreditScorePage() {
         <div>
           <h1>Credit Score</h1>
           <h3>here is your credit score, you dumb bitch</h3>
-          <div>
+          <div className={styles.ProgressSemicircle}>
             <ProgressSemicircle
               value={creditScore.creditScoreGrade}
               maxValue={1000}
