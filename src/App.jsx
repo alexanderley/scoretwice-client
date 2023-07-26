@@ -100,7 +100,7 @@ function App() {
         <Route path="/profile/:id" element={<UserProfilePage />} />
 
         <Route
-          path="/profile/:id/transactions/"
+          path="/transactions/:id"
           element={
             <IsPrivate>
               <TransactionsPage />

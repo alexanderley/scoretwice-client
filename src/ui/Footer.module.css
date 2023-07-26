@@ -38,4 +38,16 @@
 .span {
   font-size: var(--font-xs);
   color: var(--red);
+}
+
+.inactiveLink {
+  text-decoration: none;
+}
+
+.activeLink {
+  text-decoration: none;
+}
+.activeLink .roundBtn {
+  background-color: var(--red-dark);
+  transform: scale(1.15) translateY(-5px);
 }/*# sourceMappingURL=Footer.module.css.map */
