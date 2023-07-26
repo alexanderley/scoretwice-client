@@ -7,6 +7,7 @@ import API_URL from "../../apiKey";
 export default function SettingsPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFristName] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
@@ -16,37 +17,12 @@ export default function SettingsPage() {
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
+  const handleFirstName = (e) => setFristName(e.target.value);
 
   const handleChangeSubmit = (e) => {
     console.log("changing settings");
     e.preventDefault();
-    const requestBody = { email, password };
-
-    // check whatever hasb been added in the for
-    // let assert = () => {
-    //     console.log("these are password and email:", password, email);
-    //     if (email && password) {
-    //       return { email, password };
-    //     } else if (email && !password) {
-    //       return { email };
-    //     } else if (!email && password) {
-    //       return { password };
-    //     } else {
-    //       return {};
-    //     }
-    //   };
-
-    //   result = assert();
-    // console.log(result);
-
-    //   Update the user
-    //   User.findByIdAndUpdate(_id, result, { new: true })
-    //   .then((updatedUser) => {
-    //     req.session.currentUser = updatedUser;
-    //     console.log("User updated: ", updatedUser);
-    //     res.redirect("/userProfile");
-    //   })
-    //   .catch((error) => next(error));
+    const requestBody = { email, password, firstName };
 
     axios
       .put(`${API_URL}/api/users/${id}`, requestBody, {
@@ -54,7 +30,15 @@ export default function SettingsPage() {
       })
       .then((response) => {
         console.log("reponse change data: ", response.data);
-      });
+      })
+      .then(() => {});
+  };
+
+  const handleDelte = () => {
+    console.log("delete user");
+    axios.delete(`${API_URL}/api/users/${id}`, {
+      headers: { Authorization: `Bearer ${storedToken}` },
+    });
   };
 
   return (
@@ -64,20 +48,35 @@ export default function SettingsPage() {
       </h1>
 
       <form onSubmit={handleChangeSubmit}>
-        <label>Email:</label>
+        <label>Change Email:</label>
         <input type="email" name="email" value={email} onChange={handleEmail} />
-        <label>Password:</label>
+        <label>Change Password:</label>
         <input
           type="password"
           name="password"
           value={password}
           onChange={handlePassword}
         />
+        <label>Change Name:</label>
+        <input
+          type="text"
+          name="firstName"
+          value={firstName}
+          onChange={handleFirstName}
+        />
 
         <button type="submit" className="buttonRed fullWidth">
           Change Settings
         </button>
       </form>
+      <br />
+      <button
+        className="buttonRed fullWidth"
+        style={{ backgroundColor: "#a81e29" }}
+        onClick={handleDelte}
+      >
+        Delete Account
+      </button>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );

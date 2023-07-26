@@ -8,7 +8,7 @@ import EditProjectPage from "./pages/EditProjectPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import SettingsPage from "./pages/SettingsPage";
 
-import CreditScoreForm from "./pages/creditScorePage";
+import CreditScoreForm from "./pages/creditScorePage/creditScoreForm";
 
 import Footer from "./ui/Footer";
 import TransactionsPage from "./pages/TransactionsPage"; //<== IMPORT
@@ -17,6 +17,7 @@ import LoginPage from "./pages/LoginPage"; // <== IMPORT
 
 import IsPrivate from "./components/IsPrivate"; // <== IMPORT
 import IsAnon from "./components/IsAnon"; // <== IMPORT
+import CreditScorePage from "./pages/creditScorePage/creditScorePage";
 
 function App() {
   return (
@@ -85,6 +86,19 @@ function App() {
             </IsPrivate>
           }
         />
+
+
+        <Route
+          path="/credit-score"
+          element={
+            <IsPrivate>
+              {" "}
+              <CreditScorePage />{" "}
+            </IsPrivate>
+          }
+        />
+
+
         <Route path="/profile/:id" element={<UserProfilePage />} />
         <Route
           path="/credit-score/create"
@@ -102,6 +116,7 @@ function App() {
             </IsPrivate>
           }
         />
+
         <Route
           path="/settings/:id"
           element={
