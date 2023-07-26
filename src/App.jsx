@@ -11,7 +11,7 @@ import SettingsPage from "./pages/SettingsPage";
 import CreditScoreForm from "./pages/creditScorePage/creditScoreForm";
 
 import Footer from "./ui/Footer";
-import TransactionsPage from "./pages/TransactionsPage";//<== IMPORT
+import TransactionsPage from "./pages/TransactionsPage"; //<== IMPORT
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage"; // <== IMPORT
 
@@ -78,7 +78,7 @@ function App() {
         />
         <Route path="/profile/:id" element={<UserProfilePage />} />
         <Route
-          path="/credit-score/create"
+          path="/credit-score/:id/create"
           element={
             <IsPrivate>
               {" "}
@@ -87,9 +87,8 @@ function App() {
           }
         />
 
-
         <Route
-          path="/credit-score"
+          path="/credit-score/:id/"
           element={
             <IsPrivate>
               {" "}
@@ -98,16 +97,8 @@ function App() {
           }
         />
 
-
         <Route path="/profile/:id" element={<UserProfilePage />} />
-        <Route
-          path="/credit-score/create"
-          element={
-            <IsPrivate>
-              <CreditScoreForm />
-            </IsPrivate>
-          }
-        />
+
         <Route
           path="/profile/:id/transactions/"
           element={

@@ -5,6 +5,7 @@ import API_URL from "../../../apiKey";
 import Footer from "../../ui/Footer";
 import ProgressSemicircle from "../../components/progress-semicircle/ProgressSemicircle";
 import styles from "./creditscore.module.css";
+import CreditScoreAdvice from "../../components/creditscore-info";
 
 export default function CreditScorePage() {
   const storedToken = localStorage.getItem("authToken");
@@ -17,7 +18,7 @@ export default function CreditScorePage() {
     // const onChange = () => {};
 
     axios
-      .get(`${API_URL}/api/credit-score`, {
+      .get(`${API_URL}/api/credit-score/:id`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -60,6 +61,7 @@ export default function CreditScorePage() {
             </span>
             points.
           </div>
+          <CreditScoreAdvice creditScore={creditScore.creditScoreGrade} />
         </div>
       )}
 
