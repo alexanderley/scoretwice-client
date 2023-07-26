@@ -14,7 +14,6 @@ import {
   faMoneyBill,
   faBarcode,
   faMoneyBillWave,
-  
 } from "@fortawesome/free-solid-svg-icons";
 
 const TransactionsPage = () => {
@@ -25,7 +24,9 @@ const TransactionsPage = () => {
   const [selectedReceiverId, setSelectedReceiverId] = useState("");
   const [senderId, setSenderId] = useState(senderIdFromURL);
   const [userTransactions, setUserTransactions] = useState([]);
-  const [storedToken, setStoredToken] = useState(localStorage.getItem("authToken"));
+  const [storedToken, setStoredToken] = useState(
+    localStorage.getItem("authToken")
+  );
   const [depositAmount, setDepositAmount] = useState(""); // New state to store the deposit amount
 
   const handleAmountChange = (e) => {
@@ -108,7 +109,7 @@ const TransactionsPage = () => {
         },
       })
       .then((response) => {
-        setUserTransactions(response.data.transactions);
+        setUserTransactions(response.data.transactions.reverse());
       })
       .catch((error) => {
         console.error("Error fetching transactions:", error);
@@ -145,10 +146,10 @@ const TransactionsPage = () => {
   return (
     <div>
       <div className="bottomMargin">
-        <form onSubmit={handleSubmit} className="cardContainer">
+        <form onSubmit={handleSubmit} className="cardContainerNew">
           <div>
             <label className="formContainerLabel">
-            <FontAwesomeIcon icon={faBarcode} /> Sender ID
+              <FontAwesomeIcon icon={faBarcode} /> Sender ID
               <input
                 type="text"
                 value={senderId}
@@ -157,8 +158,7 @@ const TransactionsPage = () => {
               />
             </label>
             <label className="formContainerLabel">
-            <FontAwesomeIcon icon={faMoneyBill} /> Amount
-              
+              <FontAwesomeIcon icon={faMoneyBill} /> Amount
               <input
                 type="number"
                 value={amount}
@@ -168,7 +168,7 @@ const TransactionsPage = () => {
               />
             </label>
             <label className="formContainerLabel">
-            <FontAwesomeIcon icon={faCommentsDollar} /> Bank purpose
+              <FontAwesomeIcon icon={faCommentsDollar} /> Bank purpose
               <input
                 type="text"
                 value={transferMessage}
@@ -178,7 +178,7 @@ const TransactionsPage = () => {
               />
             </label>
             <label className="formContainerLabel">
-            <FontAwesomeIcon icon={faMoneyBillWave} /> Receiver
+              <FontAwesomeIcon icon={faMoneyBillWave} /> Receiver
               <select
                 value={selectedReceiverId}
                 onChange={handleReceiverChange}
@@ -195,91 +195,78 @@ const TransactionsPage = () => {
           </div>
           <br></br>
           <button className="buttonRedNew" type="submit">
-          <FontAwesomeIcon icon={faMoneyBillTransfer} /> Transfer
+            <FontAwesomeIcon icon={faMoneyBillTransfer} /> Transfer
           </button>
         </form>
-        
 
-        <div className="cardContainer">
-        <label className="formContainerLabel">
-            <FontAwesomeIcon icon={faBarcode} />Deposit amount</label>
-        <form onSubmit={handleDepositSubmit}>
+        <div className="cardContainerNew">
           <label className="formContainerLabel">
-            <input
-              type="number"
-              value={depositAmount}
-              onChange={handleDepositChange}
-              placeholder="Enter deposit amount in $"
-              className="formContainerInput"
-            />
+            <FontAwesomeIcon icon={faBarcode} />
+            Deposit amount
           </label>
-          <button className="buttonRedNew" type="submit">
-          <FontAwesomeIcon icon={faBuildingColumns} /> Deposit
-          </button>
-        </form>
+          <form onSubmit={handleDepositSubmit}>
+            <label className="formContainerLabel">
+              <input
+                type="number"
+                value={depositAmount}
+                onChange={handleDepositChange}
+                placeholder="Enter deposit amount in $"
+                className="formContainerInput"
+              />
+            </label>
+            <button className="buttonRedNew" type="submit">
+              <FontAwesomeIcon icon={faBuildingColumns} /> Deposit
+            </button>
+          </form>
+        </div>
+
+        <div>
+          {/* Rendering transactions */}
+          {userTransactions.length > 0 ? (
+            <ul className="cardContainerInvisible">
+              <h3 className="h3Class">Your transactions:</h3>
+              {userTransactions.map((transaction) => (
+                <li className="cardContainerTransactions" key={transaction._id}>
+                  {transaction.sender === senderId ? (
+                    <>
+                      <strong>
+                        <FontAwesomeIcon icon={faIdCard} />
+                      </strong>
+
+                      <strong>{transaction.receiver}</strong>
+
+                      <span className="amountpositive">
+                        -{transaction.amount}$
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <strong>
+                        <FontAwesomeIcon icon={faIdCard} />
+                      </strong>
+
+                      <strong>{transaction.sender}</strong>
+
+                      <span className="amountnegative">
+                        +{transaction.amount}$
+                      </span>
+                    </>
+                  )}
+                  <br />
+                  <div className="cardContainerNew">
+                    <FontAwesomeIcon icon={faCommentsDollar} /> Bank purpose:{" "}
+                    {transaction.transferMessage}
+                  </div>
+
+                  <br />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No transactions found for the user.</p>
+          )}
+        </div>
       </div>
-
-
-      <div>
-        {/* Rendering transactions */}
-        {userTransactions.length > 0 ? (
-          <ul className="cardContainerInvisible">
-            <h3 className="h3Class">Your transactions:</h3>
-            {userTransactions.map((transaction) => (
-              <li className="cardContainerTransactions" key={transaction._id}>
-                {transaction.sender === senderId ? (
-                  <>
-
-
-
-                    <strong><FontAwesomeIcon icon={faIdCard} /></strong>
-                    
-                    <strong>{transaction.receiver}</strong>
-
-                    <span className="amountpositive">
-                      -{transaction.amount}$
-                    </span>
-
-
-                  </>
-                ) : (
-                  <>
-
-
-
-                    <strong><FontAwesomeIcon icon={faIdCard} /></strong>
-                    
-                    <strong>{transaction.sender}</strong>
-
-                    <span className="amountnegative">
-                      +{transaction.amount}$
-                    </span>
-
-
-
-                  </>
-                )}
-                <br />
-                <div className="cardContainer">
-                <FontAwesomeIcon icon={faCommentsDollar} /> Bank purpose: {transaction.transferMessage}
-                </div>
-
-                <br />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No transactions found for the user.</p>
-        )}
-      </div>
-
-      </div>
-
-      
-
-      
-
-      
 
       <Footer></Footer>
     </div>
