@@ -36,9 +36,11 @@ const ProgressSemicircle = ({ value, maxValue }) => {
   return (
     <div className="progress-container">
       <CircularProgressbar
+        // circleRatio={0.5}
         value={(currentValue / maxValue) * 100}
         text={`${Math.floor(currentValue)}/${maxValue}`}
         styles={buildStyles({
+          // rotation: "0.5",
           strokeLinecap: "round",
           textSize: "16",
           pathColor: `rgba(220, 53, 69, ${currentValue / maxValue})`,
