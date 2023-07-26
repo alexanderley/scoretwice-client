@@ -35,19 +35,33 @@ export default function CreditScorePage() {
     <div>
       {creditScore && (
         <div>
-          <h1>Credit Score</h1>
-          <h3>here is your credit score, you dumb bitch</h3>
+          <h1>Your Credit Score</h1>
+
           <div className={styles.ProgressSemicircle}>
             <ProgressSemicircle
               value={creditScore.creditScoreGrade}
               maxValue={1000}
             />
           </div>
-          <div>{creditScore.creditScoreGrade}</div>
+
+          <div className={styles.sentence}>
+            You have a credit score of{" "}
+            <span
+              style={{
+                color:
+                  creditScore.creditScoreGrade < 600
+                    ? "red"
+                    : creditScore.creditScoreGrade < 800
+                    ? "orange"
+                    : "green",
+              }}
+            >
+              {creditScore.creditScoreGrade}{" "}
+            </span>
+            points.
+          </div>
         </div>
       )}
-
-      <p>Something</p>
 
       <Footer />
     </div>
