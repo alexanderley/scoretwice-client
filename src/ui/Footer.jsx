@@ -16,10 +16,9 @@ export default function Footer() {
     <footer className={styles.footer}>
       <NavLink
         to={`/profile/${id}`}
-        style={({ isActive }) => ({
-          color: isActive ? "#fff" : "#545e6f",
-          background: isActive ? "#7600dc" : "#f0f0f0",
-        })}
+        className={({ isActive }) =>
+          isActive ? styles.activeLink : styles.inactiveLink
+        }
       >
         <div className={styles.footerBtnContainer}>
           <div className={styles.roundBtn}>
@@ -28,35 +27,51 @@ export default function Footer() {
           <span className={styles.span}>Profile</span>
         </div>
       </NavLink>
-
-      <div className={styles.footerBtnContainer}>
-        <div className={styles.roundBtn}>
-          <FontAwesomeIcon icon={faCreditCard} style={{ color: "white" }} />
-        </div>
-        <span className={styles.span}>Accounts</span>
-      </div>
-      <div className={styles.footerBtnContainer}>
-        <div className={styles.roundBtn}>
-          <FontAwesomeIcon icon={faBolt} style={{ color: "white" }} />
-        </div>
-        <span className={styles.span}>CreditScore</span>
-      </div>
-      <div className={styles.footerBtnContainer}>
-        <NavLink
-          to={`/settings/${id}`}
-          style={({ isActive }) => ({
-            color: isActive ? "#fff" : "#545e6f",
-            background: isActive ? "#7600dc" : "#f0f0f0",
-          })}
-        >
-          <div className={styles.footerBtnContainer}>
-            <div className={styles.roundBtn}>
-              <FontAwesomeIcon icon={faGear} style={{ color: "white" }} />
-            </div>
-            <span className={styles.span}>Settings</span>
+      <NavLink
+        to={`/profile/${id}/transactions`}
+        // to={`/credit-score/${id}/create`}
+        className={({ isActive }) =>
+          isActive ? styles.activeLink : styles.inactiveLink
+        }
+      >
+        <div className={styles.footerBtnContainer}>
+          <div className={styles.roundBtn}>
+            <FontAwesomeIcon icon={faCreditCard} style={{ color: "white" }} />
           </div>
-        </NavLink>
-      </div>
+          <span className={styles.span}>Account</span>
+        </div>
+      </NavLink>
+      <NavLink
+        to={`/credit-score/${id}/`}
+        className={({ isActive }) =>
+          isActive ? styles.activeLink : styles.inactiveLink
+        }
+      >
+        <div className={styles.footerBtnContainer}>
+          <div className={styles.roundBtn}>
+            <FontAwesomeIcon icon={faBolt} style={{ color: "white" }} />
+          </div>
+          <span className={styles.span}>CreditScore</span>
+        </div>
+      </NavLink>
+
+      <NavLink
+        to={`/settings/${id}`}
+        className={({ isActive }) =>
+          isActive ? styles.activeLink : styles.inactiveLink
+        }
+      >
+        <div className={styles.footerBtnContainer}>
+          <div className={styles.roundBtn}>
+            <FontAwesomeIcon icon={faGear} style={{ color: "white" }} />
+          </div>
+          <span className={styles.span}>Settings</span>
+        </div>
+      </NavLink>
     </footer>
   );
 }
+
+// credit-score/64bf7697243cee23465e6e78
+// http://localhost:5173/credit-score/64bf7697243cee23465e6e78/create
+// http://localhost:5173/profile/64bf7697243cee23465e6e78/transactions

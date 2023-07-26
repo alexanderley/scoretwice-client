@@ -44,3 +44,16 @@
   font-size: var(--font-xs);
   color: var(--red);
 }
+
+.inactiveLink {
+  text-decoration: none;
+}
+
+.activeLink {
+  text-decoration: none;
+  .roundBtn {
+    background-color: var(--red-dark);
+    transform: scale(1.15) translateY(-5px);
+    // transform: translateY(-20px);
+  }
+}

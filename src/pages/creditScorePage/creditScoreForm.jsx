@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import API_URL from "../../../apiKey";
 import Footer from "../../ui/Footer";
@@ -7,6 +7,7 @@ import styles from "./creditscore.module.css";
 import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
+import BackButton from "../../ui/BackButton";
 
 // const API_URL = "http://localhost:5005";
 // const API_URL = "https://scoretwce-backend.onrender.com";
@@ -26,6 +27,7 @@ function CreditScoreForm(props) {
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const handleChildrenCount = (e) => {
     const value = e.target.value;
@@ -88,11 +90,11 @@ function CreditScoreForm(props) {
 
   return (
     <div className="CreditScoreForm">
+      <BackButton to={`/profile/${id}`} />
       <h1 className="textCenter">Credit Score Calculation</h1>
       <h3 className="">
         Please fill out this form so we can calculate your overall credit score
       </h3>
-
       <form
         onSubmit={handleCreditScoreSubmit}
         className={styles.creditScoreForm}
@@ -287,9 +289,7 @@ function CreditScoreForm(props) {
           Calculate Credit Score
         </button>
       </form>
-
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
       <Footer />
     </div>
   );

@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import API_URL from "../../../apiKey";
 import Footer from "../../ui/Footer";
 import ProgressSemicircle from "../../components/progress-semicircle/ProgressSemicircle";
 import styles from "./creditscore.module.css";
 import CreditScoreAdvice from "../../components/creditscore-info";
+import BackButton from "../../ui/BackButton";
 
 export default function CreditScorePage() {
   const storedToken = localStorage.getItem("authToken");
   const [creditScore, setCreditScore] = useState(null);
   const [value, onChange] = useState(new Date());
+  const { id } = useParams();
 
   console.log(value);
 
@@ -34,17 +36,16 @@ export default function CreditScorePage() {
 
   return (
     <div>
+      <BackButton to={`/profile/${id}`} />
       {creditScore && (
         <div>
           <h1>Your Credit Score</h1>
-
           <div className={styles.ProgressSemicircle}>
             <ProgressSemicircle
               value={creditScore.creditScoreGrade}
               maxValue={1000}
             />
           </div>
-
           <div className={styles.sentence}>
             You have a credit score of{" "}
             <span
@@ -64,7 +65,6 @@ export default function CreditScorePage() {
           <CreditScoreAdvice creditScore={creditScore.creditScoreGrade} />
         </div>
       )}
-
       <Footer />
     </div>
   );
