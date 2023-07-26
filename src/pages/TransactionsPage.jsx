@@ -18,7 +18,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 // Import Recharts components
-import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
 const TransactionsPage = () => {
   const { id: senderIdFromURL } = useParams();
@@ -28,7 +37,9 @@ const TransactionsPage = () => {
   const [selectedReceiverId, setSelectedReceiverId] = useState("");
   const [senderId, setSenderId] = useState(senderIdFromURL);
   const [userTransactions, setUserTransactions] = useState([]);
-  const [storedToken, setStoredToken] = useState(localStorage.getItem("authToken"));
+  const [storedToken, setStoredToken] = useState(
+    localStorage.getItem("authToken")
+  );
   const [depositAmount, setDepositAmount] = useState("");
   const [chartData, setChartData] = useState([]);
 
@@ -215,8 +226,7 @@ const TransactionsPage = () => {
 
         <div className="cardContainerNew">
           <label className="formContainerLabel">
-            <FontAwesomeIcon icon={faBarcode} />
-            Deposit amount
+            <FontAwesomeIcon icon={faBarcode} /> Deposit amount
           </label>
           <form onSubmit={handleDepositSubmit}>
             <label className="formContainerLabel">
@@ -234,19 +244,29 @@ const TransactionsPage = () => {
           </form>
         </div>
 
-
-  {/* Adding the chart */}
-  <ResponsiveContainer width="100%" height={200}>
-          <LineChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="id" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="amount" stroke="#e94653" activeDot={{ r: 8 }} />
-          </LineChart>
-        </ResponsiveContainer>
-
+        <div className="cardContainerNew">
+          <label className="formContainerLabel">
+            <FontAwesomeIcon icon={faChartLine} /> Expenses chart
+          </label>
+          <ResponsiveContainer width="100%" height={200}>
+            <LineChart
+              data={chartData}
+              margin={{ top: 20, right: 40, left: 0, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="id" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="amount"
+                stroke="#e94653"
+                activeDot={{ r: 8 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
 
         <div>
           {/* Rendering transactions */}
@@ -294,7 +314,6 @@ const TransactionsPage = () => {
             <p>No transactions found for the user.</p>
           )}
         </div>
-
       </div>
 
       <Footer></Footer>
