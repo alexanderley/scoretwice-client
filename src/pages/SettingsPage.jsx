@@ -5,6 +5,7 @@ import axios from "axios";
 import BackButton from "../ui/BackButton";
 
 import API_URL from "../../apiKey";
+import Footer from "../ui/Footer";
 
 export default function SettingsPage() {
   const [email, setEmail] = useState("");
@@ -81,6 +82,7 @@ export default function SettingsPage() {
         Delete Account
       </button>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
+      <Footer></Footer>
     </div>
   );
 }
