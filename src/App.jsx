@@ -78,7 +78,7 @@ function App() {
         />
         <Route path="/profile/:id" element={<UserProfilePage />} />
         <Route
-          path="/credit-score/create"
+          path="/credit-score/:id/create"
           element={
             <IsPrivate>
               {" "}
@@ -87,9 +87,8 @@ function App() {
           }
         />
 
-
         <Route
-          path="/credit-score"
+          path="/credit-score/:id/"
           element={
             <IsPrivate>
               {" "}
@@ -98,16 +97,8 @@ function App() {
           }
         />
 
-
         <Route path="/profile/:id" element={<UserProfilePage />} />
-        <Route
-          path="/credit-score/create"
-          element={
-            <IsPrivate>
-              <CreditScoreForm />
-            </IsPrivate>
-          }
-        />
+
         <Route
           path="/profile/:id/transactions/"
           element={

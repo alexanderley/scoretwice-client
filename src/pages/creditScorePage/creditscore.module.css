@@ -54,3 +54,9 @@ input {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.sentence {
+  display: flex;
+  white-space: pre;
+  justify-content: center;
+}

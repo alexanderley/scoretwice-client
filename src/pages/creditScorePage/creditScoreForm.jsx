@@ -72,9 +72,13 @@ function CreditScoreForm(props) {
     // If the POST request is a successful redirect to the login page
     // If the request resolves with an error, set the error message in the state
     axios
-      .post(`${API_URL}/api/credit-score/create`, requestBody, requestHeaders)
+      .post(
+        `${API_URL}/api/credit-score/:id/create`,
+        requestBody,
+        requestHeaders
+      )
       .then((response) => {
-        navigate("/credit-score/create");
+        navigate("/credit-score/:id");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;

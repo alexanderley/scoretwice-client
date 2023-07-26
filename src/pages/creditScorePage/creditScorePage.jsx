@@ -5,6 +5,7 @@ import API_URL from "../../../apiKey";
 import Footer from "../../ui/Footer";
 import ProgressSemicircle from "../../components/progress-semicircle/ProgressSemicircle";
 import styles from "./creditscore.module.css";
+import CreditScoreAdvice from "../../components/creditscore-info";
 
 export default function CreditScorePage() {
   const storedToken = localStorage.getItem("authToken");
@@ -17,7 +18,7 @@ export default function CreditScorePage() {
     // const onChange = () => {};
 
     axios
-      .get(`${API_URL}/api/credit-score`, {
+      .get(`${API_URL}/api/credit-score/:id`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -35,19 +36,34 @@ export default function CreditScorePage() {
     <div>
       {creditScore && (
         <div>
-          <h1>Credit Score</h1>
-          <h3>here is your credit score, you dumb bitch</h3>
+          <h1>Your Credit Score</h1>
+
           <div className={styles.ProgressSemicircle}>
             <ProgressSemicircle
               value={creditScore.creditScoreGrade}
               maxValue={1000}
             />
           </div>
-          <div>{creditScore.creditScoreGrade}</div>
+
+          <div className={styles.sentence}>
+            You have a credit score of{" "}
+            <span
+              style={{
+                color:
+                  creditScore.creditScoreGrade < 600
+                    ? "red"
+                    : creditScore.creditScoreGrade < 800
+                    ? "orange"
+                    : "green",
+              }}
+            >
+              {creditScore.creditScoreGrade}{" "}
+            </span>
+            points.
+          </div>
+          <CreditScoreAdvice creditScore={creditScore.creditScoreGrade} />
         </div>
       )}
-
-      <p>Something</p>
 
       <Footer />
     </div>
