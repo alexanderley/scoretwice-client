@@ -38,7 +38,7 @@ export default function UserProfilePage() {
 
   const getCreditScore = () => {
     axios
-      .get(`${API_URL}/api/credit-score/:id`, {
+      .get(`${API_URL}/api/credit-score/${id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
