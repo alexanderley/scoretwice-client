@@ -8,6 +8,11 @@ const LogoAnimation = () => {
   const [showLogo, setShowLogo] = useState(false);
   const [showButtons, setShowButtons] = useState(false); // New state for buttons
 
+  const navigate = useNavigate();
+  const handleSignUpClick = () => {
+    navigate("/signup");
+  };
+
   useEffect(() => {
     const animationDuration = 2000;
 
@@ -44,7 +49,9 @@ const LogoAnimation = () => {
       {showButtons && (
         <div className={styles.centeredContainer}>
           <div className={styles.pageContent}>
-            <button className={styles.signUpButton}>Sign Up</button>
+            <button className={styles.signUpButton} onClick={handleSignUpClick}>
+              Sign Up
+            </button>
             <p>Already have an account?</p>
             <Link to={"/login"} className={styles.loginLink}>
               Login here
