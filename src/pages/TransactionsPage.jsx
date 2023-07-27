@@ -14,7 +14,6 @@ import {
   faBarcode,
   faMoneyBillWave,
   faChartLine,
-
 } from "@fortawesome/free-solid-svg-icons";
 
 // Import Recharts components
@@ -28,6 +27,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import BackButton from "../ui/BackButton";
 
 const TransactionsPage = () => {
   const { id: senderIdFromURL } = useParams();
@@ -171,6 +171,7 @@ const TransactionsPage = () => {
   return (
     <div>
       <div className="bottomMargin">
+        <BackButton />
         <form onSubmit={handleSubmit} className="cardContainerNew">
           <div>
             <label className="formContainerLabel">

@@ -1,17 +1,19 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import HomePage from "./pages/HomePage";
+// import HomePage from "./pages/HomePage";
+
 import UserProfilePage from "./pages/UserProfilePage";
 import SettingsPage from "./pages/SettingsPage";
 import CreditScore from "./pages/CreditScore";
 
-import TransactionsPage from "./pages/TransactionsPage"; T
+import TransactionsPage from "./pages/TransactionsPage";
 import SignupPage from "./pages/SignupPage";
-import LoginPage from "./pages/LoginPage"; 
+import LoginPage from "./pages/LoginPage";
 
-import IsPrivate from "./components/IsPrivate"; 
-import IsAnon from "./components/IsAnon"; 
+import IsPrivate from "./components/IsPrivate";
+import IsAnon from "./components/IsAnon";
+import HomePage from "./pages/homepage/HomePage";
 
 function App() {
   return (
