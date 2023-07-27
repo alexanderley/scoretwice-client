@@ -28,8 +28,7 @@ export default function Footer() {
         </div>
       </NavLink>
       <NavLink
-        to={`/profile/${id}/transactions`}
-        // to={`/credit-score/${id}/create`}
+        to={`/transactions/${id}`}
         className={({ isActive }) =>
           isActive ? styles.activeLink : styles.inactiveLink
         }
@@ -42,7 +41,7 @@ export default function Footer() {
         </div>
       </NavLink>
       <NavLink
-        to={`/credit-score/${id}/`}
+        to={`/credit-score/${id}`}
         className={({ isActive }) =>
           isActive ? styles.activeLink : styles.inactiveLink
         }

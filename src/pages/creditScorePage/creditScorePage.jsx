@@ -7,11 +7,14 @@ import ProgressSemicircle from "../../components/progress-semicircle/ProgressSem
 import styles from "./creditscore.module.css";
 import CreditScoreAdvice from "../../components/creditscore-info";
 import BackButton from "../../ui/BackButton";
+import LoadingSpinner from "../../ui/LoadingSpinner";
 
 export default function CreditScorePage() {
   const storedToken = localStorage.getItem("authToken");
   const [creditScore, setCreditScore] = useState(null);
   const [value, onChange] = useState(new Date());
+  const [isLoading, setIsloading] = useState(true);
+
   const { id } = useParams();
 
   console.log(value);
@@ -26,6 +29,7 @@ export default function CreditScorePage() {
       .then((response) => {
         const oneCreditScore = response.data;
         setCreditScore(oneCreditScore);
+        setIsloading(false);
       })
       .catch((error) => console.log(error));
   };
@@ -33,6 +37,10 @@ export default function CreditScorePage() {
   useEffect(() => {
     getCreditScore();
   }, []);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div>

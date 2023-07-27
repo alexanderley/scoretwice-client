@@ -7,6 +7,7 @@ import ProjectDetailsPage from "./pages/ProjectDetailsPage";
 import EditProjectPage from "./pages/EditProjectPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import SettingsPage from "./pages/SettingsPage";
+import CreditScore from "./pages/CreditScore";
 
 import CreditScoreForm from "./pages/creditScorePage/creditScoreForm";
 
@@ -27,37 +28,6 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        {/*   UPDATE THE BELOW ROUTES   */}
-        <Route
-          path="/projects"
-          element={
-            <IsPrivate>
-              {" "}
-              <ProjectListPage />{" "}
-            </IsPrivate>
-          }
-        />
-
-        <Route
-          path="/projects/:projectId"
-          element={
-            <IsPrivate>
-              {" "}
-              <ProjectDetailsPage />{" "}
-            </IsPrivate>
-          }
-        />
-
-        <Route
-          path="/projects/edit/:projectId"
-          element={
-            <IsPrivate>
-              {" "}
-              <EditProjectPage />{" "}
-            </IsPrivate>
-          }
-        />
-
         <Route
           path="/signup"
           element={
@@ -77,27 +47,15 @@ function App() {
           }
         />
         <Route path="/profile/:id" element={<UserProfilePage />} />
+
         <Route
-          path="/credit-score/:id/create"
+          path="/credit-score/:id"
           element={
             <IsPrivate>
-              {" "}
-              <CreditScoreForm />{" "}
+              <CreditScore></CreditScore>
             </IsPrivate>
           }
         />
-
-        <Route
-          path="/credit-score/:id/"
-          element={
-            <IsPrivate>
-              {" "}
-              <CreditScorePage />{" "}
-            </IsPrivate>
-          }
-        />
-
-        <Route path="/profile/:id" element={<UserProfilePage />} />
 
         <Route
           path="/transactions/:id"
