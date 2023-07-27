@@ -5,7 +5,7 @@ import API_URL from "../../../apiKey";
 import Footer from "../../ui/Footer";
 import ProgressSemicircle from "../../components/progress-semicircle/ProgressSemicircle";
 import styles from "./creditscore.module.css";
-import CreditScoreAdvice from "../../components/creditscore-info";
+import CreditScoreAdvice from "../../components/creditscore-info/CreditScoreAdvice";
 import BackButton from "../../ui/BackButton";
 import LoadingSpinner from "../../ui/LoadingSpinner";
 
@@ -23,7 +23,7 @@ export default function CreditScorePage() {
     // const onChange = () => {};
 
     axios
-      .get(`${API_URL}/api/credit-score/:id`, {
+      .get(`${API_URL}/api/credit-score/${id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -46,7 +46,7 @@ export default function CreditScorePage() {
     <div>
       <BackButton to={`/profile/${id}`} />
       {creditScore && (
-        <div>
+        <div className={styles.creditScoreContainer}>
           <h1>Your Credit Score</h1>
           <div className={styles.ProgressSemicircle}>
             <ProgressSemicircle

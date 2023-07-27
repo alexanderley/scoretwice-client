@@ -46,9 +46,11 @@
 //     </>
 //   );
 // }
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import CreditScoreForm from "./creditScorePage/creditScoreForm";
 import CreditScorePage from "./creditScorePage/creditScorePage";
+import { CreditContext } from "../context/creditscore.context";
+
 import Footer from "../ui/Footer";
 import { useParams } from "react-router-dom";
 import API_URL from "../../apiKey";
@@ -58,12 +60,12 @@ import LoadingSpinner from "../ui/LoadingSpinner";
 export default function CreditScore() {
   const storedToken = localStorage.getItem("authToken");
   const { id } = useParams();
-  const [creditScoreExists, setCreditScoreExists] = useState(false);
+  const { creditScoreExists, setCreditScoreExists } = useContext(CreditContext);
   const [isLoading, setIsloading] = useState(true); // Set initial state to true
 
   const getCreditScore = () => {
     axios
-      .get(`${API_URL}/api/credit-score/:id`, {
+      .get(`${API_URL}/api/credit-score/${id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {

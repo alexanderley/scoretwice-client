@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import API_URL from "../../../apiKey";
@@ -8,7 +8,7 @@ import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
 import BackButton from "../../ui/BackButton";
-
+import { CreditContext } from "../../context/creditscore.context";
 // const API_URL = "http://localhost:5005";
 // const API_URL = "https://scoretwce-backend.onrender.com";
 
@@ -23,8 +23,8 @@ function CreditScoreForm(props) {
   const [ownedEmail, setOwnedEmail] = useState(false);
   const [ownedWorkphone, setOwnedWorkphone] = useState(false);
   const [creditStatus, setCreditStatus] = useState(false);
-
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const { setCreditScoreExists } = useContext(CreditContext);
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -75,12 +75,13 @@ function CreditScoreForm(props) {
     // If the request resolves with an error, set the error message in the state
     axios
       .post(
-        `${API_URL}/api/credit-score/:id/create`,
+        `${API_URL}/api/credit-score/${id}/create`,
         requestBody,
         requestHeaders
       )
       .then((response) => {
-        navigate("/credit-score/:id");
+        setCreditScoreExists(true);
+        navigate(`/credit-score/${id}`);
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
