@@ -14,16 +14,15 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
-
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 import logo from "../assets/sv-logo.png";
 
-// specific styles for this Component
 import styles from "./UserProfilePage.module.css";
 import LoadingSpinner from "../ui/LoadingSpinner";
-import CreditScore from "./CreditScore";
 
 export default function UserProfilePage() {
   const { id } = useParams();
@@ -31,82 +30,63 @@ export default function UserProfilePage() {
   const storedToken = localStorage.getItem("authToken");
   const [creditScoreNumber, setCreditScoreNumber] = useState(0);
   const [creditScore, setCreditScore] = useState(0);
-  const [isLoading, setIsloading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [creditScoreExists, setCreditScoreExists] = useState(false);
+  const [chartData, setChartData] = useState([]);
+  const [userTransactions, setUserTransactions] = useState([]); // Add userTransactions state
 
   const { logOutUser } = useContext(AuthContext);
 
   const getCreditScore = () => {
     axios
-      .get(`${API_URL}/api/credit-score/:id`, {
+      .get(`${API_URL}/api/credit-score/${id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
         if (response.data) {
           console.log(response.data);
           setCreditScoreExists(true);
-          setIsloading(false);
+          setIsLoading(false);
           setCreditScore(response.data.creditScoreGrade / 10);
           setCreditScoreNumber(response.data.creditScoreGrade);
           console.log(creditScore);
         } else {
           setCreditScoreExists(false);
-          setIsloading(false);
+          setIsLoading(false);
         }
       })
       .catch((error) => console.log(error));
   };
+
+  const fetchUserTransactions = () => {
+    axios
+      .get(`${API_URL}/api/users/${id}/transactions`, {
+        headers: {
+          Authorization: `Bearer ${storedToken}`,
+        },
+      })
+      .then((response) => {
+        setUserTransactions(response.data.transactions.reverse());
+        // Update the chart data with the new transactions
+        updateChartData(response.data.transactions);
+      })
+      .catch((error) => {
+        console.error("Error fetching transactions:", error);
+      });
+  };
+
+  // Function to update the chart data based on the user's transactions
+  const updateChartData = (transactions) => {
+    const data = transactions.map((transaction, index) => ({
+      id: index + 1, // X-axis value representing the transaction order
+      amount: transaction.amount, // Y-axis value representing the transaction amount
+    }));
+    setChartData(data);
+  };
+
   useEffect(() => {
     getCreditScore();
-  }, []);
 
-  const data = [
-    {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
-
-  useEffect(() => {
-    console.log("fetch");
     const fetchUserData = async () => {
       if (storedToken) {
         try {
@@ -118,7 +98,7 @@ export default function UserProfilePage() {
 
           console.log("user: ", user);
 
-          setIsloading(false);
+          setIsLoading(false);
 
           setTimeout(() => {
             // setCreditScore(70);
@@ -130,6 +110,11 @@ export default function UserProfilePage() {
     };
     fetchUserData();
   }, []);
+
+  useEffect(() => {
+    // Fetch the user's transactions when the component mounts
+    fetchUserTransactions();
+  }, [storedToken]);
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -202,30 +187,25 @@ export default function UserProfilePage() {
             }}
           >
             <h2 className="textCenter">Transactions</h2>
-            <LineChart
-              width={300}
-              height={180}
-              data={data}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              {/* <YAxis /> */}
-              {/* <Tooltip /> */}
-              {/* <Legend /> */}
-              <Line
-                type="monotone"
-                dataKey="pv"
-                stroke="#e94653"
-                activeDot={{ r: 8 }}
-              />
-              <Line type="monotone" dataKey="uv" stroke="#A81E29" />
-            </LineChart>
+
+            <ResponsiveContainer width="100%" height={200}>
+              <LineChart
+                data={chartData}
+                margin={{ top: 20, right: 40, left: 0, bottom: 5 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="id" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Line
+                  type="monotone"
+                  dataKey="amount"
+                  stroke="#e94653"
+                  activeDot={{ r: 8 }}
+                />
+              </LineChart>
+            </ResponsiveContainer>
           </div>
         </div>
       ) : (
