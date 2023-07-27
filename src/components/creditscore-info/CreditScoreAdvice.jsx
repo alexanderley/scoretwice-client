@@ -12,25 +12,19 @@ function CreditScoreAdvice({ creditScore }) {
       <div className={styles.advice}>
         Pay Off Past Due Balances: Start by addressing any past due balances or
         defaulted accounts. Contact your creditors to negotiate payment plans or
-        settlements if necessary. Timely payments can have a significant
-        positive impact on your credit score over time.
+        settlements if necessary.
       </div>
 
       <div className={styles.advice}>
         Use Secured Credit Cards Responsibly: Consider applying for a secured
         credit card. With a secured card, you'll need to make a deposit as
         collateral, and your credit limit will typically be equal to the deposit
-        amount. Use the card responsibly by making small purchases and paying
-        off the balance in full each month. This can help establish a positive
-        payment history.
+        amount.
       </div>
       <div className={styles.advice}>
         Check and Correct Errors on Your Credit Report: Obtain a free copy of
         your credit report from each of the major credit bureaus (Equifax,
         Experian, and TransUnion) and review them for errors. Dispute any
-        inaccuracies you find, such as incorrect account information, late
-        payments that were actually on time, or accounts that don't belong to
-        you. Correcting errors can boost your credit score.
       </div>
     </div>
   );

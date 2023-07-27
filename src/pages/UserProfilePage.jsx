@@ -112,23 +112,19 @@ export default function UserProfilePage() {
   }, []);
 
   useEffect(() => {
-    // Fetch the user's transactions when the component mounts
     fetchUserTransactions();
   }, [storedToken]);
 
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-
   return (
     <>
+      {isLoading ? <LoadingSpinner /> : ""}
       {user ? (
         <div className={styles.userPageWrapper}>
-          <img
+          {/* <img
             src={logo}
             alt="Logo"
             style={{ margin: "0 auto", width: "45px" }}
-          />
+          /> */}
           <h2 className="textCenter colorRed">
             Welcome back, <br /> {user.firstName}!
           </h2>

@@ -172,7 +172,7 @@ const TransactionsPage = () => {
   return (
     <div>
       <div className="bottomMargin">
-        <BackButton />
+        <BackButton to={`/profile/${senderIdFromURL}`} />
         <form onSubmit={handleSubmit} className="cardContainerNew">
           <div>
             <label className="formContainerLabel">
@@ -277,27 +277,31 @@ const TransactionsPage = () => {
                 <li className="cardContainerTransactions" key={transaction._id}>
                   {transaction.sender === senderId ? (
                     <>
-                      <strong>
-                        <FontAwesomeIcon icon={faIdCard} />
-                      </strong>
+                      <div className="headlineContainer">
+                        <strong>
+                          <FontAwesomeIcon icon={faIdCard} />
+                        </strong>
 
-                      <strong>{transaction.receiver}</strong>
+                        <strong>{transaction.receiver}</strong>
 
-                      <span className="amountpositive">
-                        -{transaction.amount}$
-                      </span>
+                        <span className="amountpositive">
+                          -{transaction.amount}$
+                        </span>
+                      </div>
                     </>
                   ) : (
                     <>
-                      <strong>
-                        <FontAwesomeIcon icon={faIdCard} />
-                      </strong>
+                      <div className="headlineContainer">
+                        <strong>
+                          <FontAwesomeIcon icon={faIdCard} />
+                        </strong>
 
-                      <strong>{transaction.sender}</strong>
+                        <strong>{transaction.sender}</strong>
 
-                      <span className="amountnegative">
-                        +{transaction.amount}$
-                      </span>
+                        <span className="amountnegative">
+                          +{transaction.amount}$
+                        </span>
+                      </div>
                     </>
                   )}
                   <br />
@@ -306,8 +310,6 @@ const TransactionsPage = () => {
                     <FontAwesomeIcon icon={faCommentsDollar} /> Bank purpose:{" "}
                     {transaction.transferMessage}
                   </div>
-
-                  <br />
                 </li>
               ))}
             </ul>
