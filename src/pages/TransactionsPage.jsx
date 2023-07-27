@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import API_URL from "../../apiKey";
 import Footer from "../ui/Footer";
+import style from "../pages/TransactionPage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMoneyBillTransfer,
