@@ -2,12 +2,17 @@
 .logo-animation {
   position: relative;
   height: 100vh;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .triangles-container {
-  position: relative;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .triangle {
@@ -37,7 +42,7 @@
 
 .logo-container {
   position: absolute;
-  top: 50%;
+  top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 24px;
@@ -55,6 +60,41 @@
   padding-top: 20px;
   text-align: center;
   font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.signUpButton {
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  background-color: transparent; /* Set the background to transparent by default */
+  border: none; /* Remove the border */
+  outline: none; /* Remove the outline when focused */
+}
+
+.loginLink {
+  text-decoration: none; /* Remove underline */
+}
+
+.signUpButton {
+  background-color: var(--red);
+}
+
+.loginLink {
+  background-color: var(--blue);
+}
+
+.loginLink:hover {
+  background-color: var(--dark-blue); /* Change background color on hover */
 }
 
 /* Animation keyframes */
@@ -73,23 +113,5 @@
   }
   100% {
     opacity: 1; /* Gradually increase to opacity 1 */
-  }
-}
-
-@keyframes transformLogo {
-  0% {
-    transform: translateY(0); /* Start from original position */
-  }
-  100% {
-    transform: translateY(-50vh); /* Move up 50vh */
-  }
-}
-
-@keyframes moveToTop {
-  0% {
-    transform: translate(-50%, -50%); /* Start from the centered position */
-  }
-  100% {
-    transform: translate(-50%, 0); /* Move to the top of the page */
   }
 }
