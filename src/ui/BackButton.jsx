@@ -15,7 +15,7 @@ export default function BackButton(props) {
       <Link to={props.to}>
         <FontAwesomeIcon
           icon={faArrowLeft}
-          style={{ color: "var(--red)", height: "35px" }}
+          style={{ color: "var(--red)", height: "35px", marginBottom: "15px" }}
         />
       </Link>
     </>

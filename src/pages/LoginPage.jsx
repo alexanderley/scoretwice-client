@@ -27,8 +27,6 @@ function LoginPage(props) {
     axios
       .post(`${API_URL}/auth/login`, requestBody)
       .then((response) => {
-        // Request to the server's endpoint `/auth/login` returns a response
-        // with the JWT string ->  response.data.authToken
         console.log("JWT token", response.data.authToken);
         console.log("Data foundUser Id: ", response.data.foundUser._id);
         const userId = response.data.foundUser._id;
@@ -41,25 +39,6 @@ function LoginPage(props) {
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
       });
-  };
-
-  const loginFormFields = {
-    fields: [
-      {
-        name: "email",
-        type: "text",
-        placeholder: "Email",
-        rules: { required: true, pattern: /^\S+@\S+$/i },
-        errorText: "Email not registered or not valid!",
-      },
-      {
-        name: "password",
-        type: "password",
-        placeholder: "Password",
-        rules: { required: true, maxLength: 80 },
-        errorText: "Enter a valid Password!",
-      },
-    ],
   };
 
   return (
@@ -84,8 +63,16 @@ function LoginPage(props) {
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <p className="textCenter" style={{ marginTop: "10px" }}>
+        Don't have an account yet?{" "}
+        <span>
+          {" "}
+          <Link to={"/signup"} className="colorRed">
+            {"  "}
+            Sign up
+          </Link>
+        </span>
+      </p>
     </div>
   );
 }
