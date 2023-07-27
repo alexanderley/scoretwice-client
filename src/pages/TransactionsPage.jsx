@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import API_URL from "../../apiKey";
-import styles from "../pages/TransactionPage.css";
 import Footer from "../ui/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,6 +14,7 @@ import {
   faBarcode,
   faMoneyBillWave,
   faChartLine,
+
 } from "@fortawesome/free-solid-svg-icons";
 
 // Import Recharts components
@@ -40,7 +40,7 @@ const TransactionsPage = () => {
   const [storedToken, setStoredToken] = useState(
     localStorage.getItem("authToken")
   );
-  const [depositAmount, setDepositAmount] = useState("");
+  const [depositAmount, setDepositAmount] = useState(""); // New state to store the deposit amount
   const [chartData, setChartData] = useState([]);
 
   const handleAmountChange = (e) => {
@@ -223,7 +223,6 @@ const TransactionsPage = () => {
             <FontAwesomeIcon icon={faMoneyBillTransfer} /> Transfer
           </button>
         </form>
-
         <div className="cardContainerNew">
           <label className="formContainerLabel">
             <FontAwesomeIcon icon={faBarcode} /> Deposit amount
@@ -267,7 +266,6 @@ const TransactionsPage = () => {
             </LineChart>
           </ResponsiveContainer>
         </div>
-
         <div>
           {/* Rendering transactions */}
           {userTransactions.length > 0 ? (
@@ -301,6 +299,7 @@ const TransactionsPage = () => {
                     </>
                   )}
                   <br />
+
                   <div className="cardContainerNew">
                     <FontAwesomeIcon icon={faCommentsDollar} /> Bank purpose:{" "}
                     {transaction.transferMessage}

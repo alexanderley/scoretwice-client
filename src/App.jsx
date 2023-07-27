@@ -1,29 +1,25 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import HomePage from "./pages/homepage/HomePage";
-
+import HomePage from "./pages/HomePage";
 import UserProfilePage from "./pages/UserProfilePage";
 import SettingsPage from "./pages/SettingsPage";
+import CreditScore from "./pages/CreditScore";
 
-import CreditScoreForm from "./pages/creditScorePage/creditScoreForm";
-
-import Footer from "./ui/Footer";
-import TransactionsPage from "./pages/TransactionsPage"; //<== IMPORT
+import TransactionsPage from "./pages/TransactionsPage"; T
 import SignupPage from "./pages/SignupPage";
-import LoginPage from "./pages/LoginPage"; // <== IMPORT
+import LoginPage from "./pages/LoginPage"; 
 
-import IsPrivate from "./components/IsPrivate"; // <== IMPORT
-import IsAnon from "./components/IsAnon"; // <== IMPORT
-import CreditScorePage from "./pages/creditScorePage/creditScorePage";
+import IsPrivate from "./components/IsPrivate"; 
+import IsAnon from "./components/IsAnon"; 
 
 function App() {
   return (
     <div className="App appBody">
+      <Navbar />
+
       <Routes>
         <Route path="/" element={<HomePage />} />
-
-        {/*   UPDATE THE BELOW ROUTES   */}
 
         <Route
           path="/signup"
@@ -44,27 +40,15 @@ function App() {
           }
         />
         <Route path="/profile/:id" element={<UserProfilePage />} />
+
         <Route
-          path="/credit-score/:id/create"
+          path="/credit-score/:id"
           element={
             <IsPrivate>
-              {" "}
-              <CreditScoreForm />{" "}
+              <CreditScore></CreditScore>
             </IsPrivate>
           }
         />
-
-        <Route
-          path="/credit-score/:id/"
-          element={
-            <IsPrivate>
-              {" "}
-              <CreditScorePage />{" "}
-            </IsPrivate>
-          }
-        />
-
-        <Route path="/profile/:id" element={<UserProfilePage />} />
 
         <Route
           path="/transactions/:id"
@@ -84,11 +68,8 @@ function App() {
           }
         />
       </Routes>
-      {/* <Footer /> */}
     </div>
   );
 }
 
 export default App;
-
-// http://localhost:5173/profile/64bbe772371846648850c32a
