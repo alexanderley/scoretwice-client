@@ -1,0 +1,89 @@
+.buttonRedNew {
+  border: none;
+  color: white;
+  background-color: var(--red);
+  padding: 15px;
+  border-radius: 10px;
+  width: 305px;
+}
+
+.cardContainerTransactions {
+  border: 1px solid var(--border-grey);
+  padding: 15px;
+  margin-top: 5px;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: var(--white);
+  font-size: var(--font-xs);
+  list-style: none;
+}
+.cardContainerTransactionsPositive {
+  border: 1px solid var(--border-grey);
+  padding: 15px;
+  margin-top: 5px;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: var(--green);
+  font-size: var(--font-xs);
+  list-style: none;
+}
+
+.cardContainerInfo {
+  border: 1px solid var(--border-grey);
+  padding: 15px;
+  margin-top: 5px;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: var(--mid-grey);
+  font-size: var(--font-xs);
+  list-style: none;
+}
+
+.h3Class {
+  margin-left: 7px;
+}
+strong {
+  margin-left: 10px;
+}
+.cardContainerNew {
+  border: 1px solid var(--border-grey);
+  padding: 15px;
+  margin: 5px;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: var(--white);
+  font-size: var(--font-xs);
+  list-style: none;
+}
+.cardContainerInvisible {
+  padding: 15px;
+  margin: 5px;
+  border-radius: 10px;
+  font-size: 10px;
+  list-style: none;
+}
+
+.formContainerLabel {
+  font-family: var(--font-primary);
+  font-size: var(--font-s);
+}
+
+.formContainerInput {
+  font-family: var(--font-primary);
+  font-size: var(--font-xs);
+  width: 300px;
+}
+
+.amountpositive {
+  padding-left: 25px;
+  font-size: var(--font-s);
+  color: var(--red);
+}
+.amountnegative {
+  padding-left: 25px;
+  font-size: var(--font-s);
+  color: var(--black);
+}
+.bottomMargin {
+  margin-bottom: 70px;
+}

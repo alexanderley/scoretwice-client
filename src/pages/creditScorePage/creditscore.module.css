@@ -1,0 +1,65 @@
+.creditScoreForm {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  gap: 15px;
+  line-height: 15px;
+  margin-bottom: 150px;
+}
+.creditScoreContainer {
+  margin-bottom: 150px;
+}
+
+h1,
+h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.creditScoreForm,
+input {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  box-sizing: border-box;
+}
+
+.radioContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+.radioContainer div {
+  margin-right: 20px; /* Adjust the spacing between the radio buttons */
+}
+
+.radioContainer label {
+  margin-right: 10px;
+  align-items: center;
+}
+
+.containerDiv {
+  display: flex;
+}
+
+.containerDiv,
+input {
+  margin-right: 12px;
+}
+
+.ProgressSemicircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.sentence {
+  display: flex;
+  white-space: pre;
+  justify-content: center;
+}

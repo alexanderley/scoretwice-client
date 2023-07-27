@@ -1,0 +1,15 @@
+.balanceContainer {
+  background-color: var(--pink);
+  /* padding: 15px; */
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+}
+
+.userPageWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 100px;
+}

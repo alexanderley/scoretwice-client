@@ -1,55 +1,27 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import HomePage from "./pages/HomePage";
-import ProjectListPage from "./pages/ProjectListPage";
-import ProjectDetailsPage from "./pages/ProjectDetailsPage";
-import EditProjectPage from "./pages/EditProjectPage";
+// import HomePage from "./pages/HomePage";
 
+import UserProfilePage from "./pages/UserProfilePage";
+import SettingsPage from "./pages/SettingsPage";
+import CreditScore from "./pages/CreditScore";
+
+import TransactionsPage from "./pages/TransactionsPage";
 import SignupPage from "./pages/SignupPage";
-import LoginPage from "./pages/LoginPage"; // <== IMPORT
+import LoginPage from "./pages/LoginPage";
 
-import IsPrivate from "./components/IsPrivate"; // <== IMPORT
-import IsAnon from "./components/IsAnon"; // <== IMPORT
+import IsPrivate from "./components/IsPrivate";
+import IsAnon from "./components/IsAnon";
+import HomePage from "./pages/homepage/HomePage";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App appBody">
       <Navbar />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-
-        {/*   UPDATE THE BELOW ROUTES   */}
-        <Route
-          path="/projects"
-          element={
-            <IsPrivate>
-              {" "}
-              <ProjectListPage />{" "}
-            </IsPrivate>
-          }
-        />
-
-        <Route
-          path="/projects/:projectId"
-          element={
-            <IsPrivate>
-              {" "}
-              <ProjectDetailsPage />{" "}
-            </IsPrivate>
-          }
-        />
-
-        <Route
-          path="/projects/edit/:projectId"
-          element={
-            <IsPrivate>
-              {" "}
-              <EditProjectPage />{" "}
-            </IsPrivate>
-          }
-        />
 
         <Route
           path="/signup"
@@ -67,6 +39,34 @@ function App() {
               {" "}
               <LoginPage />{" "}
             </IsAnon>
+          }
+        />
+        <Route path="/profile/:id" element={<UserProfilePage />} />
+
+        <Route
+          path="/credit-score/:id"
+          element={
+            <IsPrivate>
+              <CreditScore></CreditScore>
+            </IsPrivate>
+          }
+        />
+
+        <Route
+          path="/transactions/:id"
+          element={
+            <IsPrivate>
+              <TransactionsPage />
+            </IsPrivate>
+          }
+        />
+
+        <Route
+          path="/settings/:id"
+          element={
+            <IsPrivate>
+              <SettingsPage />
+            </IsPrivate>
           }
         />
       </Routes>

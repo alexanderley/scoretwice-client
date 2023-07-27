@@ -1,0 +1,117 @@
+/* animation.module.css */
+.logo-animation {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.triangles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  opacity: 0.5;
+  position: absolute;
+}
+
+.triangle-1 {
+  border-style: solid;
+  border-width: 100vh 100vw 0 100vw; /* Base is twice the screen width, height reduced to half */
+  border-color: red transparent transparent transparent;
+  bottom: 0;
+  left: 0;
+  animation: fadeOut 2s forwards; /* Fade out animation for 2 seconds */
+}
+
+.triangle-2 {
+  border-style: solid;
+  border-width: 100vh 100vw 0 100vw; /* Base is twice the screen width, height reduced to half */
+  border-color: red transparent transparent transparent;
+  top: 0;
+  right: 0;
+  animation: fadeOut 2s forwards; /* Fade out animation for 2 seconds */
+}
+
+.logo-container {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: bold;
+  animation: fadeIn forwards;
+}
+
+.logo {
+  width: 200px; /* Adjust the size of the logo as needed */
+  height: auto;
+  animation: fadeIn 1s 0s forwards;
+}
+
+.page-content {
+  padding-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.signUpButton {
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  background-color: transparent; /* Set the background to transparent by default */
+  border: none; /* Remove the border */
+  outline: none; /* Remove the outline when focused */
+}
+
+.loginLink {
+  text-decoration: none; /* Remove underline */
+}
+
+.signUpButton {
+  background-color: var(--red);
+}
+
+.loginLink {
+  background-color: var(--blue);
+}
+
+.loginLink:hover {
+  background-color: var(--dark-blue); /* Change background color on hover */
+}
+
+/* Animation keyframes */
+@keyframes fadeOut {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /* Start with opacity 0 */
+  }
+  100% {
+    opacity: 1; /* Gradually increase to opacity 1 */
+  }
+}

@@ -1,0 +1,21 @@
+.advice {
+  border: 1px solid var(--border-grey);
+  padding: 15px;
+  margin: 2px;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: var(--white);
+  font-size: 11px;
+  list-style: none;
+  margin-bottom: 5px;
+}
+
+.container {
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: var(--white);
+  font-size: 13px;
+  list-style: none;
+  margin-bottom: 100px;
+}
