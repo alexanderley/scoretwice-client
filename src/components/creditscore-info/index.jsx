@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css";
+import "./index.module.css";
 
 function CreditScoreAdvice({ creditScore }) {
   const lowScoreAdvice = (
