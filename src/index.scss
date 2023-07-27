@@ -84,6 +84,11 @@ p {
   margin: 0 auto;
 }
 
+.centerFlex {
+  display: flex;
+  justify-content: center;
+}
+
 .fullWidth {
   width: 100%;
 }
@@ -112,6 +117,18 @@ p {
   background-color: var(--red);
   padding: 15px;
   border-radius: 10px;
+}
+
+.buttonBorder {
+  border: 1px solid var(--red);
+  color: var(--red);
+  padding: 15px;
+  border-radius: 10px;
+  text-decoration: none;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .isActive {

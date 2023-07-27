@@ -5,17 +5,19 @@
   padding: 15px;
   border-radius: 10px;
   width: 305px;
+  font-size: var(--font-s);
 }
 
 .cardContainerTransactions {
   border: 1px solid var(--border-grey);
   padding: 15px;
-  margin-top: 5px;
+  /* margin-top: 5px; */
+  margin-bottom: 10px;
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  background-color: var(--white);
   font-size: var(--font-xs);
   list-style: none;
+  background-color: var(--pink);
 }
 .cardContainerTransactionsPositive {
   border: 1px solid var(--border-grey);
@@ -47,13 +49,13 @@ strong {
 }
 .cardContainerNew {
   border: 1px solid var(--border-grey);
-  padding: 15px;
-  margin: 5px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background-color: var(--white);
   font-size: var(--font-xs);
   list-style: none;
+  margin-bottom: 10px;
 }
 .cardContainerInvisible {
   padding: 15px;
@@ -72,6 +74,7 @@ strong {
   font-family: var(--font-primary);
   font-size: var(--font-xs);
   width: 300px;
+  margin-top: 10px;
 }
 
 .amountpositive {

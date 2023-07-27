@@ -47,28 +47,30 @@ export default function CreditScorePage() {
       <BackButton to={`/profile/${id}`} />
       {creditScore && (
         <div className={styles.creditScoreContainer}>
-          <h1>Your Credit Score</h1>
-          <div className={styles.ProgressSemicircle}>
-            <ProgressSemicircle
-              value={creditScore.creditScoreGrade}
-              maxValue={1000}
-            />
-          </div>
-          <div className={styles.sentence}>
-            You have a credit score of{" "}
-            <span
-              style={{
-                color:
-                  creditScore.creditScoreGrade < 600
-                    ? "red"
-                    : creditScore.creditScoreGrade < 800
-                    ? "orange"
-                    : "green",
-              }}
-            >
-              {creditScore.creditScoreGrade}{" "}
-            </span>
-            points.
+          <h1 className="textCenter">Your Credit Score</h1>
+          <div className="topInfoContainer cardContainer">
+            <div className={styles.ProgressSemicircle}>
+              <ProgressSemicircle
+                value={creditScore.creditScoreGrade}
+                maxValue={1000}
+              />
+            </div>
+            <div className={styles.sentence}>
+              You have a credit score of{" "}
+              <span
+                style={{
+                  color:
+                    creditScore.creditScoreGrade < 600
+                      ? "red"
+                      : creditScore.creditScoreGrade < 800
+                      ? "orange"
+                      : "green",
+                }}
+              >
+                {creditScore.creditScoreGrade}{" "}
+              </span>
+              points.
+            </div>
           </div>
           <CreditScoreAdvice creditScore={creditScore.creditScoreGrade} />
         </div>

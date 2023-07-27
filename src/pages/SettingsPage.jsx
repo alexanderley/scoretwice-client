@@ -89,7 +89,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="LoginPage">
+    <div className="LoginPage" style={{ marginBottom: "100px" }}>
       <BackButton to={`/profile/${id}`} />
       <h1 className="textCenter">
         Change <br /> Settings
