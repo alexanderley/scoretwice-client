@@ -63,7 +63,8 @@ const LogoAnimation = () => {
                 style={{
                   margin: "0",
                   marginTop: "5px",
-                  fontSize: "var(--font-xs)",
+
+                  textAlign: "center",
                 }}
               >
                 Already have an account?
