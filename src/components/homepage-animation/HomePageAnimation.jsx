@@ -11,11 +11,11 @@ const LogoAnimation = () => {
   const navigate = useNavigate();
 
   const handleSignUpClick = () => {
-    navigate("/signup");
+    window.location.href = "/signup";
   };
 
   useEffect(() => {
-    const animationDuration = 2000;
+    const animationDuration = 1000;
 
     setTimeout(() => {
       setShowAnimation(false);
@@ -30,12 +30,6 @@ const LogoAnimation = () => {
 
   return (
     <div className={styles["logo-animation"]}>
-      {showAnimation && (
-        <div className={styles["triangles-container"]}>
-          <div className={`${styles.triangle} ${styles["triangle-1"]}`}></div>
-          <div className={`${styles.triangle} ${styles["triangle-2"]}`}></div>
-        </div>
-      )}
       {showLogo && (
         <div className={styles.generalContainer}>
           <div
@@ -50,13 +44,32 @@ const LogoAnimation = () => {
       {showButtons && (
         <div className={styles.centeredContainer}>
           <div className={styles.pageContent}>
-            <button className={styles.signUpButton} onClick={handleSignUpClick}>
+            <button
+              className={styles.signUpButton}
+              onClick={handleSignUpClick}
+              style={{ marginBottom: "20px" }}
+            >
               Sign Up
             </button>
-            <p>Already have an account?</p>
-            <Link to={"/login"} className={styles.loginLink}>
-              Login here
-            </Link>
+            <div className="loginContainer">
+              <Link
+                to={`/login`}
+                style={{ display: "block" }}
+                className="buttonBorder fullWidth textCenter"
+              >
+                Login
+              </Link>
+              <p
+                style={{
+                  margin: "0",
+                  marginTop: "5px",
+
+                  textAlign: "center",
+                }}
+              >
+                Already have an account?
+              </p>
+            </div>
           </div>
         </div>
       )}

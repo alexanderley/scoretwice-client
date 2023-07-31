@@ -1,10 +1,11 @@
 /* animation.module.css */
 .logo-animation {
-  position: relative;
+  /* position: relative;
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  margin-top: 100px;
 }
 
 .triangles-container {
